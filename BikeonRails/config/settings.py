@@ -18,6 +18,7 @@ DEBUG = env('DEBUG')
 
 SECRET_KEY = env('SECRET_KEY')
 
+AUTH_USER_MODEL = 'accounts.User'
 
 ALLOWED_HOSTS = []
 
