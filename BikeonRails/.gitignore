@@ -6,6 +6,8 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 
+.env
+db.sqlite3
 
 # CMake
 cmake-build-*/
@@ -27,6 +29,7 @@ atlassian-ide-plugin.xml
 
 # SonarLint plugin
 .idea/
+
 
 
 
