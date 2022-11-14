@@ -27,6 +27,9 @@ ALLOWED_HOSTS = ['*',]
 # Application definition
 
 DJANGO_APPS = [
+    'group',
+    'address',
+    'bicycle',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
