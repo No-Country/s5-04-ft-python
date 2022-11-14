@@ -1,8 +1,14 @@
+import Layout from "./layout/Layout";
+import Router from "./router/Router";
+import { BrowserRouter } from "react-router-dom";
+
 function App() {
   return (
-    <>
-      <h1>Test Boilerplate</h1>
-    </>
+    <BrowserRouter>
+      <Layout>
+        <Router />
+      </Layout>
+    </BrowserRouter>
   );
 }
 
