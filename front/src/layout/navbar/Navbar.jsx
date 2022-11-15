@@ -27,24 +27,16 @@ const Navbar = () => {
                 </Stack>
             </Link>
             <Link to="/">
-                <Typography>
-                  Item 1
-                </Typography>
+                <Typography>Item 1</Typography>
             </Link>
             <Link to="/">
-                <Typography>
-                  Item 2
-                </Typography>
+                <Typography>Item 2</Typography>
             </Link>
             <Link to="/">
-                <Typography>
-                  Item 3
-                </Typography>
+                <Typography>Item 3</Typography>
             </Link>
             <Link to="/">
-                <Typography>
-                  Item 4
-                </Typography>
+                <Typography>Item 4</Typography>
             </Link>
             <Button
                 variant="contained"
@@ -56,7 +48,6 @@ const Navbar = () => {
                     display: { md: 'flex' },
                 }}
                 size="small"
-                
             >
                 Login
             </Button>

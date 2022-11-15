@@ -1,12 +1,12 @@
-import { Stack, TextField, Typography } from '@mui/material'
+import { Stack, TextField, Typography, Button } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
     return (
         <Stack
             alignItems="center"
             justifyContent="space-between"
-            mt={3}
             direction="row"
         >
             <Stack>
@@ -34,6 +34,9 @@ const Login = () => {
                     label="Outlined"
                     variant="outlined"
                 />
+                <Button component={Link} to="/register">
+                    Register
+                </Button>
             </Stack>
         </Stack>
     )
