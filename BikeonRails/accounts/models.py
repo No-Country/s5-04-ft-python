@@ -31,3 +31,23 @@ class User(AbstractBaseUser, PermissionsMixin):
             'refresh': str(refresh),
             'access': str(refresh.access_token)
         }
+
+
+
+
+#Direccion 
+class Address(models.Model):
+    country = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+    def __str__(self) -> str:
+        return self.country
+
+
+#
+
+
+
