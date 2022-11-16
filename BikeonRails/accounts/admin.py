@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from accounts.models import User, Address
+from accounts.models import User, PersonalInfo
 
 admin.site.register(User)
-admin.site.register(Address)
+admin.site.register(PersonalInfo)
