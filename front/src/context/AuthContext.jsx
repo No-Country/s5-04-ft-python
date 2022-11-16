@@ -26,6 +26,14 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const signIn = async () => {
+        try {
+            await axios.post(`${API_ROUTE}/login`)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <AuthContext.Provider value={{ createUser }}>
             {children}

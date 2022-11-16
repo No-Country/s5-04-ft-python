@@ -11,6 +11,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
+     const { loginUser } = useAuth()
     return (
         <Stack
             direction="column"
