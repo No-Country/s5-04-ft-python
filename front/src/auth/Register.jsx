@@ -16,8 +16,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
 const Register = () => {
-    const { authData } = useAuth()
-    console.log(authData)
+    const { createUser } = useAuth()
 
     const clientSchema = Yup.object().shape({
         username: Yup.string()
@@ -49,16 +48,19 @@ const Register = () => {
     }
 
     const handleSubmit = (values) => {
-        console.log(values)
+        createUser(values)
     }
 
     return (
-        <Stack>
+        <Stack width="35rem">
             <Typography
-                fontSize="50px"
-                variant="h1"
+                fontSize="24px"
+                fontFamily="Sora"
+                variant="h5"
+                fontWeight="500"
                 justifyContent="center"
                 alignItems="center"
+                marginBottom="2rem"
             >
                 Crea una cuenta nueva
             </Typography>
@@ -80,7 +82,7 @@ const Register = () => {
                         handleBlur,
                     }) => (
                         <Form onSubmit={handleSubmit}>
-                            <Stack>
+                            <Stack padding="3px" gap="1rem">
                                 <Stack justifyContent="flex-start" width="100%">
                                     <TextField
                                         sx={{ width: '100%' }}
@@ -150,6 +152,10 @@ const Register = () => {
                                         onBlur={handleBlur}
                                         value={values.username}
                                     />
+                                    <Typography fontSize="14px" color="#707070">
+                                        Tu nombre sera publico en tu perfil de
+                                        BikeLovers
+                                    </Typography>
                                 </Stack>
                                 <Stack justifyContent="flex-start" width="100%">
                                     <TextField
@@ -173,6 +179,9 @@ const Register = () => {
                                         onBlur={handleBlur}
                                         value={values.password}
                                     />
+                                    <Typography fontSize="14px" color="#707070">
+                                        Al menos 8 caracteres
+                                    </Typography>
                                 </Stack>
                                 <Stack justifyContent="flex-start" width="100%">
                                     <TextField
@@ -197,7 +206,7 @@ const Register = () => {
 
                                 <Button
                                     variant="contained"
-                                    color="secondary"
+                                    color="primary"
                                     type="submit"
                                     sx={{
                                         color: 'white',
@@ -217,13 +226,14 @@ const Register = () => {
                     )}
                 </Formik>
                 <Stack direction="row" alignItems="center" gap="8px">
-                    <Typography>¿Ya tenes cuenta?</Typography>
+                    <Typography>¿Ya tenés cuenta?</Typography>
                     <Typography
-                        sx={{ color: 'blue', textDecoration: 'none' }}
+                        color="secondary.dark"
+                        sx={{ textDecoration: 'none' }}
                         component={Link}
                         to="/login"
                     >
-                        Inicio Sesion
+                        Iniciá Sesión
                     </Typography>
                 </Stack>
             </Stack>
