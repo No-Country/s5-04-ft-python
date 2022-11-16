@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack } from '@mui/material'
+import { Stack, Box } from '@mui/material'
 import Navbar from './navbar/Navbar'
 import Footer from './Footer'
 
@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
             justifyContent="space-between"
         >
             <Navbar />
-            {children}
+            <Box paddingTop={'7rem'}>{children}</Box>
             <Footer />
         </Stack>
     )
