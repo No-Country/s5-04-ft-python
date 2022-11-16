@@ -8,6 +8,7 @@ export const AuthContext = createContext({})
 export const AuthProvider = ({ children }) => {
     const [dataAuth, setDataAuth] = useState({})
     console.log(dataAuth)
+
     const createUser = async (values) => {
         try {
             await axios
