@@ -6,15 +6,17 @@ const Navbar = () => {
     return (
         <Stack
             position="fixed"
-            width="100%"
+            width="15%"
+            height="100%"
             maxWidth="1440px"
-            direction="row"
+            direction="column"
             justifyContent="space-between"
             alignItems="center"
             px={{ xs: 3, sm: 5, md: 5 }}
             py="22px"
             zIndex={20}
             gap={1}
+            left={0}
             sx={{ backgroundColor: '#F6F8F8' }}
         >
             <Link to="/">
@@ -26,26 +28,6 @@ const Navbar = () => {
                     />
                 </Stack>
             </Link>
-            <Link to="/">
-                <Typography>
-                  Item 1
-                </Typography>
-            </Link>
-            <Link to="/">
-                <Typography>
-                  Item 2
-                </Typography>
-            </Link>
-            <Link to="/">
-                <Typography>
-                  Item 3
-                </Typography>
-            </Link>
-            <Link to="/">
-                <Typography>
-                  Item 4
-                </Typography>
-            </Link>
             <Button
                 variant="contained"
                 component={Link}
@@ -56,10 +38,41 @@ const Navbar = () => {
                     display: { md: 'flex' },
                 }}
                 size="small"
-                
             >
                 Login
             </Button>
+            <Link to="/">
+                <Typography
+                    color="secondary.main"
+                    
+                >
+                    Inicio
+                </Typography>
+            </Link>
+            <Link to="/">
+                <Typography
+                    color="secondary.main"
+                    sx={{ textDecoration: 'none' }}
+                >
+                    Eventos
+                </Typography>
+            </Link>
+            <Link to="/">
+                <Typography
+                    color="secondary.main"
+                    sx={{ textDecoration: 'none' }}
+                >
+                    Grupos
+                </Typography>
+            </Link>
+            <Link to="/">
+                <Typography
+                    color="secondary.main"
+                    sx={{ textDecoration: 'none' }}
+                >
+                    Item 4
+                </Typography>
+            </Link>
         </Stack>
     )
 }
