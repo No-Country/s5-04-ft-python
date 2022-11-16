@@ -28,6 +28,21 @@ const Navbar = () => {
                     />
                 </Stack>
             </Link>
+<<<<<<< HEAD
+=======
+            <Link to="/">
+                <Typography>Item 1</Typography>
+            </Link>
+            <Link to="/">
+                <Typography>Item 2</Typography>
+            </Link>
+            <Link to="/">
+                <Typography>Item 3</Typography>
+            </Link>
+            <Link to="/">
+                <Typography>Item 4</Typography>
+            </Link>
+>>>>>>> 4a76c4251629b0f72752f59b9c23567770fc0c64
             <Button
                 variant="contained"
                 component={Link}
