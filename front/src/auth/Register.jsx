@@ -31,20 +31,21 @@ const Register = () => {
             .email('Invalid Email')
             .required('This field is required'),
         password: Yup.string()
-            .min(8, 'Password is too short')
+            .min(5, 'Password is too short')
             .max(20, 'Password is too long!')
-            .required('This field is required')
-            .matches(
-                /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-                'Password must contain at least 8 characters, one uppercase, one number and one special case character'
-            ),
+            .required('This field is required'),
+        password2: Yup.string()
+            .min(5, 'Password is too short')
+            .max(20, 'Password is too long!')
+            .required('This field is required'),
     })
 
     const initialValues = {
-        email: '',
-        fullname: '',
         username: '',
+        email: '',
         password: '',
+        password2: '',
+        fullname: '',
     }
 
     const handleSubmit = (values) => {
@@ -52,19 +53,19 @@ const Register = () => {
     }
 
     return (
-        <Stack width="35rem">
-            <Typography
-                fontSize="24px"
-                fontFamily="Sora"
-                variant="h5"
-                fontWeight="500"
-                justifyContent="center"
-                alignItems="center"
-                marginBottom="2rem"
-            >
-                Crea una cuenta nueva
-            </Typography>
-            <Stack>
+        <Stack flexDirection={'row'} gap="2rem">
+            <Stack justifyContent="center">
+                <Typography
+                    fontSize="24px"
+                    fontFamily="Sora"
+                    variant="h5"
+                    fontWeight="500"
+                    justifyContent="center"
+                    alignItems="center"
+                    marginBottom="2rem"
+                >
+                    Crea una cuenta nueva
+                </Typography>
                 <Formik
                     initialValues={initialValues}
                     enableReinitialize={true}
@@ -192,14 +193,17 @@ const Register = () => {
                                                 : false
                                         }
                                         type="password"
-                                        name="password"
+                                        name="password2"
                                         margin="dense"
                                         label="Repetir Contraseña*"
                                         helperText={
-                                            touched.password &&
-                                            errors.password &&
+                                            touched.password2 &&
+                                            errors.password2 &&
                                             errors.password
                                         }
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.password2}
                                         size="small"
                                     />
                                 </Stack>
@@ -237,6 +241,10 @@ const Register = () => {
                     </Typography>
                 </Stack>
             </Stack>
+            <img
+                src="https://res.cloudinary.com/dzxsorvsv/image/upload/v1668526131/Im%C3%A1genes%20UX%20UI/Login-Register/biker_mykuqr.png"
+                alt="bici"
+            />
         </Stack>
     )
 }
