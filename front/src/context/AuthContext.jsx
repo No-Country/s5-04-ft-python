@@ -46,14 +46,14 @@ export const AuthProvider = ({ children }) => {
                 icon: 'success',
                 title: `Cuenta creada correctamente`,
             })
-            navigate('/registerSuccessfull')
+            // navigate('/login')
         } catch (error) {
             console.log(error)
         }
     }
 
     return (
-        <AuthContext.Provider value={{ createUser }}>
+        <AuthContext.Provider value={{ createUser, dataAuth }}>
             {children}
         </AuthContext.Provider>
     )
