@@ -27,11 +27,12 @@ const LOGIN_FORM_VALIDATIONS = Yup.object().shape({
             3,
             'La password es demasiado corta, debe contener más de 8 caracteres'
         )
-        .required('*La contraseña es requerida'),
+        .required('* La contraseña es requerida'),
 })
 
 const Login = () => {
     const { signIn } = useAuth()
+    
 
     const handleSubmit = (values) => {
         signIn(values)
@@ -60,6 +61,7 @@ const Login = () => {
                     height="450px"
                     sx={{ border: '0.5px solid #333' }}
                     padding={'1rem'}
+                    margin='1rem'
                 >
                     <Typography variant="h6">
                         Inicia sesión en BikeLovers
@@ -160,7 +162,7 @@ const Login = () => {
                                     <Button
                                         variant="contained"
                                         type="submit"
-                                        sx={{ margin:'1rem 0 1rem 0' }}
+                                        sx={{ margin: '1rem 0 1rem 0' }}
                                     >
                                         Iniciar Sesión
                                     </Button>
@@ -170,7 +172,7 @@ const Login = () => {
                                             to="/register"
                                             variant="body2"
                                             color="secondary.main"
-                                            sx={{ textDecoration: 'none' }}
+                                            sx={{ textDecoration: 'none'}}
                                         >
                                             {' '}
                                             crea una
@@ -187,11 +189,16 @@ const Login = () => {
                                         <Divider width={'50%'} />
                                     </Stack>
                                     <Button
+                                        as={Link}
+                                        to="/facial"
                                         variant="contained"
+                                        fullWidth
                                         sx={{
                                             backgroundColor: '#049AAA',
-                                            margin: '1rem 0',
+                                            textDecoration: 'none',
                                         }}
+
+                                        
                                     >
                                         Reconocimiento Facial
                                     </Button>

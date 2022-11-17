@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
                 mode: 'cors',
                 body: JSON.stringify(values),
             }
-            
+
             await fetch(`${API_ROUTE}/auth/register/`, requestOptions)
                 .then((response) => response.json())
                 .then((data) => console.log(data))
@@ -56,11 +56,13 @@ export const AuthProvider = ({ children }) => {
 
             await fetch(`${API_ROUTE}/auth/login/`, requestOptions)
                 .then((response) => response.json())
-                .then((data) => console.log(`Usuario ${data.username} logueado con éxito`,data))
-                setIsLogged(true)
-                
-
-
+                .then((data) =>
+                    console.log(
+                        `Bienvenido, ${data.username} fuiste logueado con éxito`,
+                        data
+                    )
+                )
+            setIsLogged(true)
         } catch (error) {
             console.log(error)
         }
