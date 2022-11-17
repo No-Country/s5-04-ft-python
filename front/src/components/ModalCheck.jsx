@@ -1,26 +1,43 @@
-import { Button, Stack, Typography } from '@mui/material'
+import { Button, Stack, Typography, Box } from '@mui/material'
 import React from 'react'
 import { useAuth } from '../hooks/useAuth'
 
 const ModalCheck = () => {
     const { dataAuth } = useAuth()
     return (
-        <Stack>
-            <Typography>Verifica tu email</Typography>
+        <Box
+            sx={{
+                backgroundColor: '#dadada',
+                padding: '1rem',
+                borderRadius: '3px',
+                boxShadow: '0px 2px 1px gray',
+                maxWidth: '800px',
+            }}
+        >
             <Stack>
-                <Typography>
-                    Hola {dataAuth?.username}! Necesitas verificar tu email para
-                    completar el registro
-                </Typography>
-                <img src="" alt="foto verificacion" />
-                <Typography>
-                    Te hemos enviado un email a {dataAuth?.email} con un enlace
-                    para verificar tu cuenta. Si no has recibido el email
-                    después de unos minutos, por favor revisa tu carpeta de spam
-                </Typography>
-                <Button>Reenviar</Button>
+                <Stack gap="2rem">
+                    <Typography>Verifica tu email</Typography>
+                    <Typography>
+                        Hola {dataAuth?.username}! Necesitas verificar tu email
+                        para completar el registro
+                    </Typography>
+                    <Stack alignItems="center">
+                        <img
+                            src="https://res.cloudinary.com/dzxsorvsv/image/upload/v1668526128/Im%C3%A1genes%20UX%20UI/Login-Register/checkemail_jxabwr.png"
+                            alt="foto verificacion"
+                            style={{ width: '250px', height: '250px' }}
+                        />
+                    </Stack>
+                    <Typography>
+                        Te hemos enviado un email a {dataAuth?.email} con un
+                        enlace para verificar tu cuenta. Si no has recibido el
+                        email después de unos minutos, por favor revisa tu
+                        carpeta de spam
+                    </Typography>
+                    <Button sx={{ color: '#049AAA' }}>Reenviar Email</Button>
+                </Stack>
             </Stack>
-        </Stack>
+        </Box>
     )
 }
 
