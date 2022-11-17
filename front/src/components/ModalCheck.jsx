@@ -16,7 +16,13 @@ const ModalCheck = () => {
         >
             <Stack>
                 <Stack gap="2rem">
-                    <Typography>Verifica tu email</Typography>
+                    <Typography
+                        fontSize="24px"
+                        fontFamily="Sora"
+                        fontWeight="600"
+                    >
+                        Verifica tu email
+                    </Typography>
                     <Typography>
                         Hola {dataAuth?.username}! Necesitas verificar tu email
                         para completar el registro
@@ -34,7 +40,19 @@ const ModalCheck = () => {
                         email después de unos minutos, por favor revisa tu
                         carpeta de spam
                     </Typography>
-                    <Button sx={{ color: '#049AAA' }}>Reenviar Email</Button>
+                    <Stack alignItems="center">
+                        <Button
+                            sx={{
+                                color: '#049AAA',
+                                backgroundColor: 'white',
+                                border: '1px solid',
+                                borderColor: '#049AAA',
+                                padding: '13px',
+                            }}
+                        >
+                            Reenviar Email
+                        </Button>
+                    </Stack>
                 </Stack>
             </Stack>
         </Box>

@@ -21,24 +21,21 @@ const Register = () => {
 
     const clientSchema = Yup.object().shape({
         username: Yup.string()
-            .min(3, 'nickname is too short')
-            .max(20, 'nickname is too long!')
-            .required('This field is required'),
+            .min(3, 'El nombre de usuario es demasiado corto')
+            .max(20, 'El nombre de usuario es demasiado largo')
+            .required('Campo requerido'),
         fullname: Yup.string()
-            .min(3, 'Full Name is too short')
-            .max(25, 'Full Name is too long!')
-            .required('This field is required'),
+            .min(3, 'El nombre es demasiado corto')
+            .max(25, 'El nombre es demasiado largo')
+            .required('Campo requerido'),
         email: Yup.string()
-            .email('Invalid Email')
-            .required('This field is required'),
+            .email('El email no es valido')
+            .required('Campo requerido'),
         password: Yup.string()
-            .min(5, 'Password is too short')
-            .max(20, 'Password is too long!')
-            .required('This field is required'),
-        password2: Yup.string()
-            .min(5, 'Password is too short')
-            .max(20, 'Password is too long!')
-            .required('This field is required'),
+            .min(8, 'La contraseña es demasiada corto')
+            .max(20, 'La contraseña es demasiada larga')
+            .required('Campo requerido'),
+        password2: Yup.string().required('Campo requerido'),
     })
 
     const initialValues = {
