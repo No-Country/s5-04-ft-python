@@ -5,27 +5,12 @@ from django.contrib.auth.models import (
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
-
-#Personal info 
-class PersonalInfo(models.Model):
-    blood_type = models.CharField(max_length=4)
-    country = models.CharField(max_length=255, null=True)
-    city = models.CharField(max_length=255, null=True)
-    address = models.CharField(max_length=255, null=True)
-    
-
-    def __str__(self) -> str:
-        return self.country
-
-#User
 class User(AbstractBaseUser, PermissionsMixin):
 
     username = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True, db_index=True)
-    picture = models.ImageField('foto group',upload_to='group/', null=False, blank=True, default='profile.png')
-    personal_info = models.ForeignKey(PersonalInfo, on_delete=models.CASCADE, blank=True, null=True)
-    
+
     is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -46,13 +31,3 @@ class User(AbstractBaseUser, PermissionsMixin):
             'refresh': str(refresh),
             'access': str(refresh.access_token)
         }
-
-
-
-
-
-
-
-
-
-

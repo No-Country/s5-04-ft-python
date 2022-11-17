@@ -36,13 +36,8 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-<<<<<<< HEAD
-    'accounts',
-    'group',
-    
-=======
     'apps.accounts',
->>>>>>> fb2b5f70b439ea22f103a2a8adabafc0fe33dc8c
+    'apps.group',
 ]
 
 THIRD_PARTY_APPS = [
@@ -163,8 +158,7 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-#MEDIA_ROOT = (BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -178,10 +172,6 @@ EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-<<<<<<< HEAD
-
-=======
 #config static nube
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
->>>>>>> fb2b5f70b439ea22f103a2a8adabafc0fe33dc8c
