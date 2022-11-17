@@ -1,4 +1,3 @@
-from pathlib import Path
 from config import db
 from datetime import timedelta
 
