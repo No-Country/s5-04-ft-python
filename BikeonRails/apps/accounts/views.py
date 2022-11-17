@@ -42,6 +42,8 @@ class RegisterView(GenericAPIView):
             user_data = serializer.data
             email_confirm(request, user_data)
             return Response(user_data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class VerifyEmail(APIView):
