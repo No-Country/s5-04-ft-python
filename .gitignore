@@ -6,6 +6,7 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 
+<<<<<<< HEAD:.gitignore
 # Environments
 .env
 .venv
@@ -15,6 +16,10 @@ ENV/
 env.bak/
 venv.bak/
 
+=======
+.env
+db.sqlite3
+>>>>>>> fb2b5f70b439ea22f103a2a8adabafc0fe33dc8c:BikeonRails/.gitignore
 
 # CMake
 cmake-build-*/
@@ -36,6 +41,7 @@ atlassian-ide-plugin.xml
 
 # SonarLint plugin
 .idea/
+
 
 
 

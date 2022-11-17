@@ -36,9 +36,13 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
+<<<<<<< HEAD
     'accounts',
     'group',
     
+=======
+    'apps.accounts',
+>>>>>>> fb2b5f70b439ea22f103a2a8adabafc0fe33dc8c
 ]
 
 THIRD_PARTY_APPS = [
@@ -174,4 +178,10 @@ EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
+<<<<<<< HEAD
 
+=======
+#config static nube
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+>>>>>>> fb2b5f70b439ea22f103a2a8adabafc0fe33dc8c

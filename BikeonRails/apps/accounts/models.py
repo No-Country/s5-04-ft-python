@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.manager import MyUserManager
+from apps.accounts.manager import MyUserManager
 from django.contrib.auth.models import (
     AbstractBaseUser, PermissionsMixin)
 from rest_framework_simplejwt.tokens import RefreshToken

@@ -7,17 +7,17 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.models import User
-from accounts.serializers import (RegisterSerializer, EmailVerificationSerializer, ResetPasswordEmailRequestSerializer,
+from apps.accounts.models import User
+from apps.accounts.serializers import (RegisterSerializer, EmailVerificationSerializer, ResetPasswordEmailRequestSerializer,
                                   SetNewPasswordSerializer, LoginSerializer, LogoutSerializer)
-from accounts.utils import Util
+from apps.accounts.utils import Util
 
 from django.urls import reverse
 from django.conf import settings
 
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
-from accounts.verify import email_confirm
+from apps.accounts.verify import email_confirm
 
 import jwt
 
@@ -42,6 +42,8 @@ class RegisterView(GenericAPIView):
             user_data = serializer.data
             email_confirm(request, user_data)
             return Response(user_data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class VerifyEmail(APIView):
