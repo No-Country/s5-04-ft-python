@@ -1,12 +1,16 @@
 import axios from 'axios'
+import { Toast } from '../utils/swalToast'
 import { createContext, useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export const API_ROUTE = import.meta.env.VITE_APP_API_ROUTE
 
 export const AuthContext = createContext({})
 
 export const AuthProvider = ({ children }) => {
+    const navigate = useNavigate()
+
     const [dataAuth, setDataAuth] = useState({})
     const [isLogged, setIsLogged] = useState(false)
     console.log(dataAuth)
@@ -39,7 +43,13 @@ export const AuthProvider = ({ children }) => {
 
             await fetch(`${API_ROUTE}/auth/register/`, requestOptions)
                 .then((response) => response.json())
-                .then((data) => console.log(data))
+                .then((data) => setDataAuth(data))
+
+            Toast.fire({
+                icon: 'success',
+                title: `Cuenta creada correctamente`,
+            })
+            // navigate('/login')
         } catch (error) {
             console.log(error)
         }
@@ -69,7 +79,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ createUser, signIn }}>
+        <AuthContext.Provider value={{ createUser, signIn, dataAuth }}>
             {children}
         </AuthContext.Provider>
     )
