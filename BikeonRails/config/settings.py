@@ -2,6 +2,7 @@ from pathlib import Path
 from config import db
 from datetime import timedelta
 
+
 import environ
 import os
 
@@ -44,6 +45,8 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'drf_yasg',
+    'django_extensions',
+
 ]
 # Application definition
 
@@ -108,7 +111,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = db.POSTGRESQL
+DATABASES = db.SQLITE
 
 
 # Password validation
