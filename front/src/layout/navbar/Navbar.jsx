@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <Stack
             position="fixed"
-            width="15%"
+            width="200px"
             height="100%"
             maxWidth="1440px"
             direction="column"
@@ -28,21 +28,6 @@ const Navbar = () => {
                     />
                 </Stack>
             </Link>
-<<<<<<< HEAD
-=======
-            <Link to="/">
-                <Typography>Item 1</Typography>
-            </Link>
-            <Link to="/">
-                <Typography>Item 2</Typography>
-            </Link>
-            <Link to="/">
-                <Typography>Item 3</Typography>
-            </Link>
-            <Link to="/">
-                <Typography>Item 4</Typography>
-            </Link>
->>>>>>> 4a76c4251629b0f72752f59b9c23567770fc0c64
             <Button
                 variant="contained"
                 component={Link}
@@ -57,12 +42,7 @@ const Navbar = () => {
                 Login
             </Button>
             <Link to="/">
-                <Typography
-                    color="secondary.main"
-                    
-                >
-                    Inicio
-                </Typography>
+                <Typography color="secondary.main">Inicio</Typography>
             </Link>
             <Link to="/">
                 <Typography
@@ -85,7 +65,15 @@ const Navbar = () => {
                     color="secondary.main"
                     sx={{ textDecoration: 'none' }}
                 >
-                    Item 4
+                    Menu Item 4
+                </Typography>
+            </Link>
+            <Link to="/">
+                <Typography
+                    color="secondary.main"
+                    sx={{ textDecoration: 'none' }}
+                >
+                    Menu Item 5
                 </Typography>
             </Link>
         </Stack>
