@@ -1,8 +1,8 @@
-from accounts.models import User
+from apps.accounts.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
-from accounts.utils import Util
+from apps.accounts.utils import Util
 
 
 def email_confirm(request, user_data):
