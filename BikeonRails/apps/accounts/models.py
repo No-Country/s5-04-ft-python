@@ -48,17 +48,11 @@ class InfoPerson(models.Model):
 
 class User(AbstractBaseUser, PermissionsMixin):
 
-    ROL_CHOICES = (
-        ('Admin', 'Admin'),
-        ('User', 'User'),
-    )
-
     username = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='group/', default='profile.png', blank=True, null=True)
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     info_person = models.ForeignKey(InfoPerson, on_delete=models.CASCADE, blank=True, null=True)
-    rol_user = models.CharField(max_length=5, choices=ROL_CHOICES, default=ROL_CHOICES[1][0])
     bicycle = models.ForeignKey(BicycleModels, on_delete=models.CASCADE, blank=True, null=True)
     manager = models.ForeignKey('self', related_name="user", on_delete=models.CASCADE, blank=True, null=True)
 
