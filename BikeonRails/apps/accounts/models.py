@@ -6,6 +6,35 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from phonenumber_field.modelfields import PhoneNumberField
 
 
+class BicycleModels(models.Model):
+
+    class BikeColors(models.TextChoices):
+        WHITE = 'WT', ('Blanco')
+        BLACK = 'BK', ('Negro')
+        RED = 'RD', ('Rojo')
+        GREEN = 'GN', ('Verde')
+        YELLOW = 'YW', ('Amarillo')
+        BLUE = 'BL', ('AZUL')
+        GREY = 'GR', ('Blanco')
+        PINK = 'PK', ('Blanco')
+
+    SIZE_CHOICES = (
+        ('Small', 'Small'),
+        ('Medium', 'Medium'),
+        ('Large', 'Large'),
+        ('XLarge', 'XLarge'),
+    )
+
+    brand = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='bicycle/', default='profile.png', blank=True, null=True)
+    serial = models.CharField(unique=True, max_length=100)
+    color = models.CharField(max_length=2, choices=BikeColors.choices, default=BikeColors.WHITE)
+    size = models.CharField(max_length=6, choices=SIZE_CHOICES, default=SIZE_CHOICES[1][0])
+
+    def __str__(self) -> str:
+        return self.brand
+
+
 class InfoPerson(models.Model):
     blood_type = models.CharField(max_length=4)
     country = models.CharField(max_length=100, blank=True, null=True)
@@ -20,7 +49,7 @@ class InfoPerson(models.Model):
 class User(AbstractBaseUser, PermissionsMixin):
 
     ROL_CHOICES = (
-        ('Admin', 'admin'),
+        ('Admin', 'Admin'),
         ('User', 'User'),
     )
 
@@ -30,6 +59,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     info_person = models.ForeignKey(InfoPerson, on_delete=models.CASCADE, blank=True, null=True)
     rol_user = models.CharField(max_length=5, choices=ROL_CHOICES, default=ROL_CHOICES[1][0])
+    bicycle = models.ForeignKey(BicycleModels, on_delete=models.CASCADE, blank=True, null=True)
     manager = models.ForeignKey('self', related_name="user", on_delete=models.CASCADE, blank=True, null=True)
 
     is_verified = models.BooleanField(default=False)
