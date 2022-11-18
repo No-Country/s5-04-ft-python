@@ -33,7 +33,6 @@ const LOGIN_FORM_VALIDATIONS = Yup.object().shape({
 const Login = () => {
     const { signIn } = useAuth()
     
-
     const handleSubmit = (values) => {
         signIn(values)
     }
@@ -216,6 +215,7 @@ const Login = () => {
                     />
                 </Box>
             </Stack>
+            
         </Stack>
     )
 }
