@@ -1,11 +1,18 @@
-import { Avatar, Box, Button, Menu, MenuItem, Tooltip, Typography } from '@mui/material'
+import {
+    Avatar,
+    Box,
+    Button,
+    Menu,
+    MenuItem,
+    Tooltip,
+    Typography,
+} from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
 const UserMenu = () => {
-
-    const { isLogged, username } = useAuth()
+    const { isLogged, setIsLogged, username } = useAuth()
 
     const [menuItems, setMenuItems] = useState(['Profile', 'Logout'])
     const navigate = useNavigate()
@@ -28,14 +35,16 @@ const UserMenu = () => {
     const handleClick = (setting) => {
         switch (setting) {
             case 'Profile':
-                navigate('/profile')
+                // navigate('/profile')
                 break
             case 'Admin Dashboard':
                 navigate('/admin')
                 break
             case 'Logout':
+                setIsLogged(false)
                 // dispatch(logout())
                 navigate('/')
+
                 break
 
             default:
@@ -51,9 +60,13 @@ const UserMenu = () => {
                     // startIcon={<IoMdArrowDropdown color="black" />}
                     sx={{ p: 0, px: 1 }}
                 >
-                    <Avatar alt={username}>{username.charAt(0).toUpperCase()}</Avatar>
+                    <Avatar alt={username}>
+                        {username.charAt(0).toUpperCase()}
+                    </Avatar>
                 </Button>
             </Tooltip>
+            <Typography>{username.toUpperCase()}</Typography>
+            <Typography sx={{ color: '#565A5C' }}>@{username}</Typography>
             <Menu
                 sx={{ mt: '45px' }}
                 id="menu-appbar"

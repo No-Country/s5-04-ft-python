@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
             await fetch(`${API_ROUTE}/auth/login/`, requestOptions)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data)
+                    // console.log(data)
                     setIsLogged(true)
                     setUserName(data.username)
                     localStorage.setItem('tokens',JSON.stringify(data))
@@ -86,7 +86,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ createUser, signIn, isLogged, username }}>
+        <AuthContext.Provider value={{ createUser, signIn, isLogged, setIsLogged, username }}>
             {children}
         </AuthContext.Provider>
     )
