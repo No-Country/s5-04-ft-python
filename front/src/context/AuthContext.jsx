@@ -12,8 +12,15 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
 
     const [dataAuth, setDataAuth] = useState({})
+    const [userRol, setUserRol] = useState('')
+    const [username, setUserName] = useState('')
     const [isLogged, setIsLogged] = useState(false)
-    console.log(dataAuth)
+
+    useEffect(() => {
+        async function preload() {
+            if (dataAuth.token) await refreshToken()
+        }
+    }, [])
 
     // const createUser = async (values) => {
     //     try {
@@ -66,20 +73,20 @@ export const AuthProvider = ({ children }) => {
 
             await fetch(`${API_ROUTE}/auth/login/`, requestOptions)
                 .then((response) => response.json())
-                .then((data) =>
-                    console.log(
-                        `Bienvenido, ${data.username} fuiste logueado con éxito`,
-                        data
-                    )
-                )
-            setIsLogged(true)
-        } catch (error) {
+                .then((data) => {
+                    console.log(data)
+                    setIsLogged(true)
+                    setUserName(data.username)
+                    localStorage.setItem('tokens',JSON.stringify(data))
+                })
+                
+            } catch (error) {
             console.log(error)
         }
     }
 
     return (
-        <AuthContext.Provider value={{ createUser, signIn, dataAuth }}>
+        <AuthContext.Provider value={{ createUser, signIn, isLogged, username }}>
             {children}
         </AuthContext.Provider>
     )
