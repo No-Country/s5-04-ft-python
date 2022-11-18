@@ -50,7 +50,12 @@ const Register = () => {
         createUser(values)
     }
     return (
-        <Stack flexDirection={'row'} gap="2rem">
+        <Stack
+            width="100%"
+            justifyContent="space-between"
+            flexDirection="row"
+            gap="2rem"
+        >
             {dataAuth?.email ? (
                 <ModalCheck />
             ) : (
@@ -82,7 +87,10 @@ const Register = () => {
                             handleChange,
                             handleBlur,
                         }) => (
-                            <Form onSubmit={handleSubmit}>
+                            <Form
+                                style={{ width: '35rem' }}
+                                onSubmit={handleSubmit}
+                            >
                                 <Stack padding="3px" gap="1rem">
                                     <Stack
                                         justifyContent="flex-start"

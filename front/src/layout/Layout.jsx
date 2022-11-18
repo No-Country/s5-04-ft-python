@@ -5,16 +5,10 @@ import Footer from './Footer'
 
 const Layout = ({ children }) => {
     return (
-        <Stack
-            spacing="0"
-            width="100%"
-            alignItems="center"
-            height="100vh"
-            justifyContent="space-between"
-        >
-            <Navbar />
-            <Box paddingTop={'7rem'}>{children}</Box>
-            <Footer />
+        <Stack spacing="0" width="100%" alignItems="center" height="100vh">
+            <Stack width="100%" height="100%" direction="row">
+                {children}
+            </Stack>
         </Stack>
     )
 }

@@ -15,23 +15,6 @@ export const AuthProvider = ({ children }) => {
     const [isLogged, setIsLogged] = useState(false)
     console.log(dataAuth)
 
-    // const createUser = async (values) => {
-    //     try {
-    //         await axios
-    //             .post(`${API_ROUTE}/auth/register/`, values)
-    //             .then((response) => response.json())
-    //             .then(
-    //                 (response) => console.log(response),
-    //                 window.localStorage.setItem(
-    //                     'user',
-    //                     JSON.stringify(response)
-    //                 )
-    //             )
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
-
     const createUser = async (values) => {
         try {
             const requestOptions = {

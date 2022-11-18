@@ -47,7 +47,7 @@ const Navbar = () => {
             <Link to="/">
                 <Typography
                     color="secondary.main"
-                    sx={{ textDecoration: 'none'}}
+                    sx={{ textDecoration: 'none' }}
                 >
                     Eventos
                 </Typography>
