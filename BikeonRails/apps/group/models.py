@@ -30,9 +30,28 @@ class BikeGroupsModel(models.Model):
     event = models.ForeignKey(EventModel, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
-        return f"user {self.user_id} - {self.name}"
+        return f"user {self.name}"
 
     class Meta:
         verbose_name = 'Grupo'
         verbose_name_plural = 'Grupos'
         ordering = ['id']
+
+
+class RolesModel(models.Model):
+
+    ROL_CHOICES = (
+        ('Admin', 'Admin'),
+        ('User', 'User'),
+    )
+
+    rol = models.CharField(max_length=5, choices=ROL_CHOICES, default=ROL_CHOICES[1][0])
+
+    def __str__(self) -> str:
+        return self.rol
+
+
+class GroupUsersRolModel(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    group_id = models.ForeignKey(BikeGroupsModel, on_delete=models.CASCADE)
+    rol_id = models.ForeignKey(RolesModel, on_delete=models.CASCADE)
