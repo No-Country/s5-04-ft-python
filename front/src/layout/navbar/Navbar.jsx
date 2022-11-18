@@ -1,8 +1,12 @@
-import { Button, Stack, Typography } from '@mui/material'
+import { Avatar, Button, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
+import UserMenu from './UserMenu'
 
 const Navbar = () => {
+    const { isLogged, username } = useAuth()
+
     return (
         <Stack
             position="fixed"
@@ -28,26 +32,40 @@ const Navbar = () => {
                     />
                 </Stack>
             </Link>
-            <Button
-                variant="contained"
-                component={Link}
-                to="/login"
-                sx={{
-                    textTransform: 'none',
-                    px: '30px',
-                    display: { md: 'flex' },
-                }}
-                size="small"
-            >
-                Login
-            </Button>
+            {!isLogged ? (
+                <Button
+                    variant="contained"
+                    component={Link}
+                    to="/login"
+                    sx={{
+                        textTransform: 'none',
+                        px: '30px',
+                        display: { md: 'flex' },
+                    }}
+                    size="small"
+                >
+                    Login
+                </Button>
+            ) : (
+                <UserMenu/>
+                // <Stack>
+                //     <Avatar>{username.charAt(0).toUpperCase()}</Avatar>
+                //     <Typography>
+                //         {username}
+                //     </Typography>
+                //     <Typography sx={{ color: '#565A5C' }}>
+                //         @{username}
+                //     </Typography>
+                // </Stack>
+            )}
+
             <Link to="/">
                 <Typography color="secondary.main">Inicio</Typography>
             </Link>
             <Link to="/">
                 <Typography
                     color="secondary.main"
-                    sx={{ textDecoration: 'none'}}
+                    sx={{ textDecoration: 'none' }}
                 >
                     Eventos
                 </Typography>
