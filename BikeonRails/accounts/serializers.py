@@ -8,27 +8,47 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from accounts.models import User
 
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext as _
+import re
+
 
 class RegisterSerializer(serializers.ModelSerializer):
-    password2 = serializers.CharField(style={'input_type'}, min_length=4, max_length=12, write_only=True)
+    password2 = serializers.CharField(
+        style={"input_type"}, min_length=4, max_length=12, write_only=True
+    )
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password', 'password2']
-        extra_kwargs = {
-            'password': {'write_only': True}
-        }
+        fields = ["id", "username", "email", "password", "password2"]
+        extra_kwargs = {"password": {"write_only": True}}
 
     def save(self):
         user = User(
-            email=self.validated_data['email'],
-            username=self.validated_data['username'],
+            email=self.validated_data["email"],
+            username=self.validated_data["username"],
         )
-        password = self.validated_data['password']
-        password2 = self.validated_data['password2']
+        password = self.validated_data["password"]
+        password2 = self.validated_data["password2"]
 
         if password != password2:
-            raise serializers.ValidationError({'password': 'Passwords must match.'})
+            raise serializers.ValidationError({"password": "Passwords must match."})
+
+        # uppercase
+
+        if not re.findall("[A-Z]", password):
+            raise ValidationError(
+                _("The password must contain at least 1 uppercase letter, A-Z."),
+                code="password_no_upper",
+            )
+
+        # numbers
+
+        if not re.findall("\d", password):
+            raise ValidationError(
+                _("The password must contain at least 1 digit, 0-9."),
+                code="password_no_number",
+            )
 
         user.set_password(password)
         user.save()
@@ -40,14 +60,14 @@ class EmailVerificationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['token']
+        fields = ["token"]
 
 
 class ResetPasswordEmailRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(min_length=2)
 
     class Meta:
-        fields = ['email']
+        fields = ["email"]
 
 
 class SetNewPasswordSerializer(serializers.Serializer):
@@ -57,25 +77,25 @@ class SetNewPasswordSerializer(serializers.Serializer):
     uidb64 = serializers.CharField(min_length=1, write_only=True)
 
     class Meta:
-        fields = ['password', 'token', 'uidb64']
+        fields = ["password", "token", "uidb64"]
 
     def validate(self, attrs):
         try:
-            password = attrs.get('password')
-            token = attrs.get('token')
-            uidb64 = attrs.get('uidb64')
+            password = attrs.get("password")
+            token = attrs.get("token")
+            uidb64 = attrs.get("uidb64")
 
             id = force_str(urlsafe_base64_decode(uidb64))
             user = User.objects.get(id=id)
             if not PasswordResetTokenGenerator().check_token(user, token):
-                raise AuthenticationFailed('The reset link is invalid', 401)
+                raise AuthenticationFailed("The reset link is invalid", 401)
 
             user.set_password(password)
             user.save()
 
-            return (user)
+            return user
         except Exception as e:
-            raise AuthenticationFailed('The reset link is invalid', 401)
+            raise AuthenticationFailed("The reset link is invalid", 401)
         return super().validate(attrs)
 
 
@@ -87,25 +107,21 @@ class LoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'username', 'tokens']
+        fields = ["email", "password", "username", "tokens"]
 
     def validate(self, attrs):
-        email = attrs.get('email', '')
-        password = attrs.get('password', '')
+        email = attrs.get("email", "")
+        password = attrs.get("password", "")
 
         user = auth.authenticate(email=email, password=password)
         if not user:
-            raise AuthenticationFailed('Invalid credentials, try again')
+            raise AuthenticationFailed("Invalid credentials, try again")
         if not user.is_active:
-            raise AuthenticationFailed('Account disables, contact admin')
+            raise AuthenticationFailed("Account disables, contact admin")
         if not user.is_verified:
-            raise AuthenticationFailed('Email is not verified')
+            raise AuthenticationFailed("Email is not verified")
 
-        return {
-            'email': user.email,
-            'username': user.username,
-            'tokens': user.tokens()
-        }
+        return {"email": user.email, "username": user.username, "tokens": user.tokens()}
 
         return super(LoginSerializer, self).validate()
 
@@ -113,16 +129,14 @@ class LoginSerializer(serializers.ModelSerializer):
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()
 
-    default_error_message = {
-        'bad_token': ('Token is expired or invalid')
-    }
+    default_error_message = {"bad_token": ("Token is expired or invalid")}
 
     def validate(self, attrs):
-        self.token = attrs['refresh']
+        self.token = attrs["refresh"]
         return attrs
 
     def save(self, **kwargs):
         try:
             RefreshToken(self.token).blacklist()
         except TokenError:
-            self.fail('bad_token')
+            self.fail("bad_token")

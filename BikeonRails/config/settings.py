@@ -117,7 +117,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-        # el option
         "OPTIONS": {
             "min_length": 5,
         },
@@ -127,10 +126,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-    # mi proyecto
-    {
-        "NAME": "BikeonRails.accounts.validators.UppercaseValidator",
     },
 ]
 
