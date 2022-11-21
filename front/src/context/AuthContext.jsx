@@ -82,9 +82,12 @@ export const AuthProvider = ({ children }) => {
                 body: JSON.stringify(values),
             }
             setLoading(true)
-            await fetch(`${API_ROUTE}/request-reset-email/`, requestOptions)
+            await fetch(
+                `${API_ROUTE}/auth/request-reset-email/`,
+                requestOptions
+            )
                 .then((response) => response.json())
-                .then((data) => setData(data))
+                .then((data) => console.log(data))
 
             Toast.fire({
                 icon: 'success',
