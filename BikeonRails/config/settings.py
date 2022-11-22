@@ -38,6 +38,7 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     'apps.accounts',
     'apps.group',
+    'apps.info',
 ]
 
 THIRD_PARTY_APPS = [
