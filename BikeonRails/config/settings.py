@@ -35,6 +35,7 @@ DJANGO_APPS = [
 
 LOCAL_APPS = [
     'apps.accounts',
+    'apps.group',
 ]
 
 THIRD_PARTY_APPS = [
@@ -147,13 +148,11 @@ USE_TZ = True
 
 # cors header config
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:3030",
+    "http://localhost:5173",
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "http://localhost:3030",
+    "http://localhost:5173",
 ]
 
 STATIC_URL = 'static/'
