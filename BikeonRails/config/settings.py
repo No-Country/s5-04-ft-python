@@ -1,7 +1,5 @@
-from config import db
 from datetime import timedelta
-
-
+from config import db
 import environ
 import os
 
