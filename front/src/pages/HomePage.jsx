@@ -1,12 +1,12 @@
 import { Stack } from '@mui/material'
 import { useAuth } from '../hooks/useAuth'
 
-const Home = () => {
+const HomePage = () => {
     return (
-        <Stack height={'100vh'}>
-            <h1>Home</h1>
+        <Stack>
+            <h1>HomePage</h1>
         </Stack>
     )
 }
 
-export default Home
+export default HomePage

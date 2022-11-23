@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack, Box } from '@mui/material'
-import Navbar from './navbar/Navbar'
 import Footer from './Footer'
+import DrawerMenu from './navbar/DrawerMenu'
 
 const Layout = ({ children }) => {
     return (
@@ -12,7 +12,8 @@ const Layout = ({ children }) => {
             height="100vh"
             justifyContent="space-between"
         >
-            <Navbar />
+            
+            <DrawerMenu />
             <Box paddingTop={'7rem'}>{children}</Box>
             <Footer />
         </Stack>
