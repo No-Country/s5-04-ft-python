@@ -169,7 +169,7 @@ const Login = () => {
                                     <Typography>
                                         ¿No tenés cuenta?
                                         <Link
-                                            to="/register"
+                                            to="/registro"
                                             variant="body2"
                                             color="secondary.main"
                                             sx={{ textDecoration: 'none' }}
