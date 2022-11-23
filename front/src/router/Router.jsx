@@ -5,6 +5,7 @@ import Login from '../auth/Login'
 import Register from '../auth/Register'
 import Facial from '../auth/Facial'
 import ForgotPassword from '../pages/ForgotPassword'
+import ModalVerified from '../components/ModalVerified'
 
 const Router = () => {
     return (
@@ -14,6 +15,7 @@ const Router = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgotPassword" element={<ForgotPassword />} />
+            <Route path="/emailConfirmed" element={<ModalVerified />} />
             <Route path="/facial" element={<Facial />} />
         </Routes>
     )

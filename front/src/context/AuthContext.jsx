@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
     const [username, setUserName] = useState('')
     const [isLogged, setIsLogged] = useState(false)
     const [loading, setLoading] = useState(false)
-
+    console.log(dataAuth)
     useEffect(() => {
         async function preload() {
             if (dataAuth.token) await refreshToken()

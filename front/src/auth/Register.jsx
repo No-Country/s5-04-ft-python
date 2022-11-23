@@ -33,7 +33,7 @@ const Register = () => {
             .email('El email no es valido')
             .required('Campo requerido'),
         password: Yup.string()
-            .min(8, 'La contraseña es demasiada corto')
+            .min(5, 'La contraseña es demasiada corto')
             .max(20, 'La contraseña es demasiada larga')
             .required('Campo requerido'),
         password2: Yup.string().required('Campo requerido'),
