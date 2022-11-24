@@ -1,5 +1,4 @@
 import { Stack } from '@mui/material'
-import { useAuth } from '../hooks/useAuth'
 
 const HomePage = () => {
     return (

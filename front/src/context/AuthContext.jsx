@@ -12,32 +12,17 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
 
     const [dataAuth, setDataAuth] = useState({})
+    const [data, setData] = useState({})
     const [userRol, setUserRol] = useState('')
     const [username, setUserName] = useState('')
     const [isLogged, setIsLogged] = useState(false)
-
+    const [loading, setLoading] = useState(false)
+    console.log(dataAuth)
     useEffect(() => {
         async function preload() {
             if (dataAuth.token) await refreshToken()
         }
     }, [])
-
-    // const createUser = async (values) => {
-    //     try {
-    //         await axios
-    //             .post(`${API_ROUTE}/auth/register/`, values)
-    //             .then((response) => response.json())
-    //             .then(
-    //                 (response) => console.log(response),
-    //                 window.localStorage.setItem(
-    //                     'user',
-    //                     JSON.stringify(response)
-    //                 )
-    //             )
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
 
     const createUser = async (values) => {
         try {
@@ -47,7 +32,7 @@ export const AuthProvider = ({ children }) => {
                 mode: 'cors',
                 body: JSON.stringify(values),
             }
-
+            setLoading(true)
             await fetch(`${API_ROUTE}/auth/register/`, requestOptions)
                 .then((response) => response.json())
                 .then((data) => setDataAuth(data))
@@ -59,6 +44,8 @@ export const AuthProvider = ({ children }) => {
             // navigate('/login')
         } catch (error) {
             console.log(error)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -77,16 +64,56 @@ export const AuthProvider = ({ children }) => {
                     // console.log(data)
                     setIsLogged(true)
                     setUserName(data.username)
-                    localStorage.setItem('tokens',JSON.stringify(data))
+                    localStorage.setItem('tokens', JSON.stringify(data))
                 })
-                
-            } catch (error) {
+        } catch (error) {
             console.log(error)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const forgotPassword = async (values) => {
+        try {
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                mode: 'cors',
+                body: JSON.stringify(values),
+            }
+            setLoading(true)
+            await fetch(
+                `${API_ROUTE}/auth/request-reset-email/`,
+                requestOptions
+            )
+                .then((response) => response.json())
+                .then((data) => console.log(data))
+
+            Toast.fire({
+                icon: 'success',
+                title: `Email de recuperacion enviado!`,
+            })
+            // navigate('/login')
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false)
         }
     }
 
     return (
-        <AuthContext.Provider value={{ createUser, signIn, isLogged, setIsLogged, username }}>
+        <AuthContext.Provider
+            value={{
+                createUser,
+                signIn,
+                isLogged,
+                setIsLogged,
+                username,
+                dataAuth,
+                loading,
+                forgotPassword,
+            }}
+        >
             {children}
         </AuthContext.Provider>
     )

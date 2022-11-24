@@ -76,7 +76,7 @@ function ResponsiveDrawer(props) {
                 </Link>
 
                 {/* GRUPOS */}
-                <Link to={'/grupos'}>
+                <Link to={'/group'}>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>

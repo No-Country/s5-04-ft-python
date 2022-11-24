@@ -7,6 +7,10 @@ import Facial from '../auth/Facial'
 import HomePage from '../pages/HomePage'
 import Rutas from '../pages/Rutas'
 import Grupos from '../pages/Grupos'
+import ForgotPassword from '../pages/ForgotPassword'
+import ModalVerified from '../components/ModalVerified'
+import CardGroups from '../components/CardGroups'
+import NewGroups from '../components/NewGroups'
 
 const Router = () => {
     return (
@@ -14,9 +18,13 @@ const Router = () => {
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/registro" element={<Register />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/forgotPassword" element={<ForgotPassword />} />
+            <Route path="/emailConfirmed" element={<ModalVerified />} />
             <Route path="/facial" element={<Facial />} />
-            <Route path="/grupos" element={<Grupos />} />
+            <Route path="/group" element={<Grupos />} />
+            <Route path="/newGroup" element={<NewGroups />} />
+            <Route path="/group/:id" element={<CardGroups />} />
             <Route path="/rutas" element={<Rutas />} />
         </Routes>
     )
