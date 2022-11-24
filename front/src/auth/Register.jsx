@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import ModalCheck from '../components/ModalCheck'
 import Loading from '../components/Loading'
+import { Fragment } from 'react'
 
 const Register = () => {
     const { createUser, dataAuth, loading } = useAuth()
@@ -51,7 +52,7 @@ const Register = () => {
         createUser(values)
     }
     return (
-        <>
+        <Stack paddingLeft="17rem">
             {loading ? (
                 <Loading />
             ) : (
@@ -295,7 +296,7 @@ const Register = () => {
                     )}
                 </Stack>
             )}
-        </>
+        </Stack>
     )
 }
 export default Register

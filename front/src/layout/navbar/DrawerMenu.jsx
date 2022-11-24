@@ -15,6 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
 import { Button, Stack, TextField } from '@mui/material'
 import { Home, Map, Settings, Users } from 'react-feather'
+import HomePage from '../../pages/HomePage'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import UserMenu from './UserMenu'
@@ -75,7 +76,7 @@ function ResponsiveDrawer(props) {
                 </Link>
 
                 {/* GRUPOS */}
-                <Link to={'/grupos'}>
+                <Link to={'/group'}>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>

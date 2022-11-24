@@ -9,6 +9,7 @@ import Rutas from '../pages/Rutas'
 import Grupos from '../pages/Grupos'
 import ForgotPassword from '../pages/ForgotPassword'
 import ModalVerified from '../components/ModalVerified'
+import CardGroups from '../components/CardGroups'
 
 const Router = () => {
     return (
@@ -20,7 +21,8 @@ const Router = () => {
             <Route path="/forgotPassword" element={<ForgotPassword />} />
             <Route path="/emailConfirmed" element={<ModalVerified />} />
             <Route path="/facial" element={<Facial />} />
-            <Route path="/grupos" element={<Grupos />} />
+            <Route path="/group" element={<Grupos />} />
+            <Route path="/group/:id" element={<CardGroups />} />
             <Route path="/rutas" element={<Rutas />} />
         </Routes>
     )
