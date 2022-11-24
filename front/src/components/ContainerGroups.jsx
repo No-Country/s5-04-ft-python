@@ -12,6 +12,7 @@ const ContainerGroups = () => {
             item
             spacing={2}
             padding={3}
+            gap="2rem"
         >
             {groups.map((item) => (
                 <CardGroups key={item.id} item={item} />
