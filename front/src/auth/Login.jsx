@@ -32,7 +32,7 @@ const LOGIN_FORM_VALIDATIONS = Yup.object().shape({
 
 const Login = () => {
     const { signIn } = useAuth()
-    
+
     const handleSubmit = (values) => {
         signIn(values)
     }
@@ -60,7 +60,7 @@ const Login = () => {
                     height="450px"
                     sx={{ border: '0.5px solid #333' }}
                     padding={'1rem'}
-                    margin='1rem'
+                    margin="1rem"
                 >
                     <Typography variant="h6">
                         Inicia sesión en BikeLovers
@@ -151,6 +151,7 @@ const Login = () => {
                                         />
                                     </Stack>
                                     <Link
+                                        to="/forgotPassword"
                                         href="#"
                                         variant="body2"
                                         color="secondary.main"
@@ -168,10 +169,10 @@ const Login = () => {
                                     <Typography>
                                         ¿No tenés cuenta?
                                         <Link
-                                            to="/registro"
+                                            to="/register"
                                             variant="body2"
                                             color="secondary.main"
-                                            sx={{ textDecoration: 'none'}}
+                                            sx={{ textDecoration: 'none' }}
                                         >
                                             {' '}
                                             crea una
@@ -196,8 +197,6 @@ const Login = () => {
                                             backgroundColor: '#049AAA',
                                             textDecoration: 'none',
                                         }}
-
-                                        
                                     >
                                         Reconocimiento Facial
                                     </Button>
@@ -215,7 +214,6 @@ const Login = () => {
                     />
                 </Box>
             </Stack>
-            
         </Stack>
     )
 }

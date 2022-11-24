@@ -10,11 +10,10 @@ const Layout = ({ children }) => {
             width="100%"
             alignItems="center"
             height="100vh"
-            justifyContent="space-between"
+            justifyContent="flex-start"
         >
-            
             <DrawerMenu />
-            <Box paddingTop={'7rem'}>{children}</Box>
+            <Box width="100%">{children}</Box>
             <Footer />
         </Stack>
     )
