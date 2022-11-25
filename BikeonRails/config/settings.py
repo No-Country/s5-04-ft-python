@@ -36,7 +36,9 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    'accounts',
+    'apps.accounts',
+    'apps.group',
+    'apps.info',
 ]
 
 THIRD_PARTY_APPS = [
@@ -147,13 +149,11 @@ USE_TZ = True
 
 # cors header config
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:3030",
+    "http://localhost:5173",
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "http://localhost:3030",
+    "http://localhost:5173",
 ]
 
 STATIC_URL = 'static/'
@@ -170,3 +170,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+#config static nube
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
