@@ -24,9 +24,17 @@ const LOGIN_FORM_VALIDATIONS = Yup.object().shape({
         .required('* El email es requerido'),
     password: Yup.string()
         .min(
-            3,
-            'La password es demasiado corta, debe contener más de 8 caracteres'
+            5,
+            'La password es demasiado corta, debe contener al menos 5 caracteres'
         )
+        .max(
+            20,
+            'La contraseña ingresada es demasiado larga, debe ser menor o igual a 20 caracteres'
+        )
+        // .matches(
+        //     /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+        //     'La contraseña debe contener al menos una letra mayúscula y un número entero'
+        // )
         .required('* La contraseña es requerida'),
 })
 
@@ -42,14 +50,24 @@ const Login = () => {
             direction="column"
             alignItems="center"
             justifyContent="center"
-            width="80%"
+            width={{ xs: '100%', sm: '100%', md: '80%', lg: '80%', xl: '80%' }}
             height="100%"
-            margin={'0 auto'}
+            // margin={{ lg: '0 auto'}}
+            marginLeft={{ xs: '250px' }}
+            // padding={{ xs: '100%', sm: '100%', md: '5rem' }}
         >
             <Stack
                 alignItems="center"
                 justifyContent="space-between"
-                width="100%"
+                // width="100%"
+                // height="500px"
+                width={{
+                    xs: '100%',
+                    sm: '100%',
+                    md: '100%',
+                    lg: '100%',
+                    xl: '100%',
+                }}
                 height="500px"
                 sx={{ backgroundColor: '#F6F8F8' }}
                 direction="row"
@@ -159,13 +177,20 @@ const Login = () => {
                                     >
                                         ¿Olvidaste la contraseña?
                                     </Link>
-                                    <Button
-                                        variant="contained"
-                                        type="submit"
+                                    <Stack
+                                        flexDirection={'row'}
+                                        height={'3rem'}
+                                        alignItems={'center'}
+                                        justifyContent={'center'}
                                         sx={{ margin: '1rem 0 1rem 0' }}
                                     >
-                                        Iniciar Sesión
-                                    </Button>
+                                        <Button
+                                            variant="contained"
+                                            type="submit"
+                                        >
+                                            Iniciar Sesión
+                                        </Button>
+                                    </Stack>
                                     <Typography>
                                         ¿No tenés cuenta?
                                         <Link
@@ -183,23 +208,36 @@ const Login = () => {
                                         height={'2px'}
                                         alignItems={'center'}
                                         justifyContent={'center'}
+                                        padding={'1rem'}
                                     >
                                         <Divider width={'50%'} />
                                         <Typography px={'3px'}> o </Typography>
                                         <Divider width={'50%'} />
                                     </Stack>
-                                    <Button
-                                        as={Link}
-                                        to="/facial"
-                                        variant="contained"
-                                        fullWidth
-                                        sx={{
-                                            backgroundColor: '#049AAA',
-                                            textDecoration: 'none',
-                                        }}
+                                    <Stack
+                                        flexDirection={'row'}
+                                        height={'3rem'}
+                                        alignItems={'end'}
+                                        justifyContent={'center'}
                                     >
-                                        Reconocimiento Facial
-                                    </Button>
+                                        <Link
+                                            to="/facial"
+                                            variant="body2"
+                                            color="secondary.main"
+                                            sx={{ textDecoration: 'none' }}
+                                        >
+                                            <Button
+                                                variant="contained"
+                                                fullWidth
+                                                sx={{
+                                                    backgroundColor: '#049AAA',
+                                                    textDecoration: 'none',
+                                                }}
+                                            >
+                                                Reconocimiento Facial
+                                            </Button>
+                                        </Link>
+                                    </Stack>
                                 </Form>
                             )
                         }}

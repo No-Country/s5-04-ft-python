@@ -1,9 +1,9 @@
-import { Stack } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 
 const HomePage = () => {
     return (
         <Stack>
-            <h1>HomePage</h1>
+            <Typography margin={'0 auto'} variant='h3'>HomePage</Typography>
         </Stack>
     )
 }

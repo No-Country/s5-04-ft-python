@@ -1,10 +1,12 @@
-import { Stack } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import React from 'react'
 
 const Rutas = () => {
   return (
       <Stack>
-          <h1>Rutas</h1>
+          <Typography margin={'0 auto'} variant="h3">
+              Rutas
+          </Typography>
       </Stack>
   )
 }
