@@ -11,18 +11,11 @@ import {
 } from '@mui/material'
 import React from 'react'
 import { styled } from '@mui/material'
-const RoutesCard = ({ item }) => {
-    const ButtonStyled = styled(Button)({
-        backgroundColor: '#F51D38',
-        color: 'white',
-        width: '100%',
-        '&:hover': {
-            backgroundColor: '#ff001e',
-            borderColor: '#ff001e',
-            boxShadow: 'none',
-        },
-    })
+import PlaceIcon from '@mui/icons-material/Place'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import FlagIcon from '@mui/icons-material/Flag'
 
+const RoutesCard = ({ item }) => {
     //El color de la dificultad va a ir cambiando a medida de cual sea la misma
 
     return (
@@ -55,7 +48,8 @@ const RoutesCard = ({ item }) => {
                         {item.groupName}
                     </Typography>
                     <Typography marginY="8px" fontSize="16px">
-                        (icon lugar) {item.place}
+                        <PlaceIcon />
+                        {item.place}
                     </Typography>
 
                     <Stack direction="row" gap="10px">
@@ -77,10 +71,12 @@ const RoutesCard = ({ item }) => {
                             </Typography>
                         </Box>
                         <Typography>
-                            {item?.distance}(icon carrera)20km
+                            <FlagIcon style={{ color: 'black' }} />
+                            {item?.distance}20km
                         </Typography>
                         <Typography>
-                            {item?.timeTravel}(icon tiempo)01:45
+                            <AccessTimeIcon />
+                            {item?.timeTravel}01:45
                         </Typography>
                     </Stack>
                 </CardContent>

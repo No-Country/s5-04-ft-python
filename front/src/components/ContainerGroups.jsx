@@ -10,7 +10,8 @@ const ContainerGroups = () => {
             gridTemplateColumns="1fr 1fr 1fr"
             width="100%"
             item
-            padding={3}
+            paddingTop="2rem"
+            paddingRight="1.5rem"
             gap="2rem"
         >
             {groups.map((item) => (

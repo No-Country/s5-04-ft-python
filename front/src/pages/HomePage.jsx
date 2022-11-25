@@ -16,7 +16,14 @@ const HomePage = () => {
                     justifyContent="space-between"
                     alignItems="center"
                 >
-                    <Typography>Rutas</Typography>
+                    <Typography
+                        fontSize="24px"
+                        fontFamily="Sora"
+                        variant="h5"
+                        fontWeight="600"
+                    >
+                        Rutas
+                    </Typography>
                     <Button
                         component={Link}
                         to="/newGroup"
@@ -28,7 +35,15 @@ const HomePage = () => {
                 <Box>
                     <RoutesContainer />
                 </Box>
-                <Typography marginTop="2rem">Actividad</Typography>
+                <Typography
+                    marginTop="2rem"
+                    fontSize="24px"
+                    fontFamily="Sora"
+                    variant="h5"
+                    fontWeight="600"
+                >
+                    Actividad
+                </Typography>
             </Stack>
             <Stack>
                 <Typography>Tu proximo evento</Typography>
