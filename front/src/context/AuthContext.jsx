@@ -17,12 +17,23 @@ export const AuthProvider = ({ children }) => {
     const [username, setUserName] = useState('')
     const [isLogged, setIsLogged] = useState(false)
     const [loading, setLoading] = useState(false)
-    console.log(dataAuth)
+    // console.log(dataAuth)
+
     useEffect(() => {
         async function preload() {
             if (dataAuth.token) await refreshToken()
         }
     }, [])
+
+    useEffect(() => {
+        const loggedUserJSON = localStorage.getItem('tokens')
+        if (loggedUserJSON) {
+            const user = JSON.parse(loggedUserJSON)
+            setData(user)
+            // data.tokens.refresh
+            console.log(data);
+        }
+    }, []);
 
     const createUser = async (values) => {
         try {
@@ -66,6 +77,35 @@ export const AuthProvider = ({ children }) => {
                     setUserName(data.username)
                     localStorage.setItem('tokens', JSON.stringify(data))
                 })
+                Toast.fire({
+                    icon: 'success',
+                    title: `Usuario loguado satisfactoriamente!`,
+                })
+            } catch (error) {
+                console.log(error)
+            } finally {
+                setLoading(false)
+            }
+        }
+        
+
+    const signOut = async (values) => {
+        try {
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                mode: 'cors',
+                body: JSON.stringify(values),
+            }
+
+            await fetch(`${API_ROUTE}/auth/logout/`, requestOptions)
+                .then((response) => response.json())
+                .then((data) => {
+                    // console.log(data.tokens.refresh)
+                    setIsLogged(false)
+                    localStorage.removeItem('tokens')
+                })
+                
         } catch (error) {
             console.log(error)
         } finally {
@@ -106,6 +146,7 @@ export const AuthProvider = ({ children }) => {
             value={{
                 createUser,
                 signIn,
+                signOut,
                 isLogged,
                 setIsLogged,
                 username,
