@@ -1,24 +1,22 @@
 import { Grid, Stack } from '@mui/material'
 import groups from '../assets/groups.json'
-import CardGroups from './CardGroups'
+import RoutesCard from './RoutesCard'
 
-const ContainerGroups = () => {
-    console.log(groups)
+const RoutesContainer = () => {
     return (
         <Grid
             display="grid"
             gridTemplateColumns="1fr 1fr 1fr"
             width="100%"
             item
-            paddingTop="2rem"
-            paddingRight="1.5rem"
+            marginTop="2rem"
             gap="2rem"
         >
             {groups.map((item) => (
-                <CardGroups key={item.id} item={item} />
+                <RoutesCard key={item.id} item={item} />
             ))}
         </Grid>
     )
 }
 
-export default ContainerGroups
+export default RoutesContainer

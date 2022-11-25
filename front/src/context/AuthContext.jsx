@@ -72,7 +72,7 @@ export const AuthProvider = ({ children }) => {
             await fetch(`${API_ROUTE}/auth/login/`, requestOptions)
                 .then((response) => response.json())
                 .then((data) => {
-                    // console.log(data)
+                    console.log(data)
                     setIsLogged(true)
                     setUserName(data.username)
                     localStorage.setItem('tokens', JSON.stringify(data))

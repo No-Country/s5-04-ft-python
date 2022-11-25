@@ -10,7 +10,6 @@ const Grupos = () => {
                 justifyContent="space-between"
                 alignItems="center"
                 paddingRight="24px"
-                paddingLeft="22px"
             >
                 <Typography
                     fontSize="24px"
