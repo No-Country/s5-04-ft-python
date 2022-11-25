@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText'
 import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
 import { Button, Stack, TextField } from '@mui/material'
-import { Home, Map, Settings, Users } from 'react-feather'
+import { Home, LogOut, Map, Settings, Users } from 'react-feather'
 import HomePage from '../../pages/HomePage'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
@@ -111,6 +111,18 @@ function ResponsiveDrawer(props) {
                     </ListItemButton>
                 </ListItem>
             </List>
+            
+            {isLogged && <List>
+                {/* CERRAR SESIÓN */}
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <LogOut color="#000" />
+                        </ListItemIcon>
+                        <ListItemText> Cerrar Sesión </ListItemText>
+                    </ListItemButton>
+                </ListItem>
+            </List>}
         </div>
     )
 

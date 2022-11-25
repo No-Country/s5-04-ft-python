@@ -157,17 +157,17 @@ const NewGroups = () => {
                                     rows={5}
                                     label="Describe de qué trata tu grupo..."
                                     type="text"
-                                    name="nameGroup"
+                                    name="description"
                                     margin="dense"
                                     helperText={
-                                        touched.nameGroup &&
-                                        errors.nameGroup &&
-                                        errors.nameGroup
+                                        touched.description &&
+                                        errors.description &&
+                                        errors.description
                                     }
                                     size="small"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    value={values.nameGroup}
+                                    value={values.description}
                                 />
                                 <Typography
                                     fontSize="12px"
