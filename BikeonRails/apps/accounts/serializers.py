@@ -36,28 +36,30 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"password": "Passwords must match."})
 
         # minlength
-        if len(password) < 5:
-            raise ValidationError(
-                _("This password must contain at least 5 characters."),
-                code="password_too_short",
+        try:
+            if len(password) < 5:
+                raise ValidationError(                                                
             )
+        except Exception as e:
+            raise AuthenticationFailed("This password must contain at least 5 characters.", 400)
 
-        # numbers
-
-        if not re.findall("\d", password):
-            raise ValidationError(
-                _("The password must contain at least 1 digit, 0-9."),
-                code="password_no_number",
+        #Uppercase
+        try:
+            if not re.findall('[A-Z]', password):
+                raise ValidationError(                                                
             )
-
-        # uppercase
-
-        if not re.findall("[A-Z]", password):
-            raise ValidationError(
-                _("The password must contain at least 1 uppercase letter, A-Z."),
-                code="password_no_upper",
+        except Exception as e:
+            raise AuthenticationFailed("The password must contain at least 1 uppercase letter, A-Z.", 400)
+        
+        #numbers
+        try:
+            if not re.findall('\d', password):
+                raise ValidationError(                                                
             )
-
+        except Exception as e:
+            raise AuthenticationFailed("The password must contain at least 1 digit, 0-9.", 400)               
+             
+        
         user.set_password(password)
         user.save()
         return user
