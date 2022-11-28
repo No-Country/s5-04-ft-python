@@ -39,7 +39,7 @@ const LOGIN_FORM_VALIDATIONS = Yup.object().shape({
 })
 
 const Login = () => {
-    const { signIn } = useAuth()
+    const { signIn, signOut } = useAuth()
 
     const handleSubmit = (values) => {
         signIn(values)
@@ -173,7 +173,9 @@ const Login = () => {
                                         href="#"
                                         variant="body2"
                                         color="secondary.main"
-                                        sx={{ textDecoration: 'none' }}
+                                        style={{
+                                            textDecoration: 'none',
+                                        }}
                                     >
                                         ¿Olvidaste la contraseña?
                                     </Link>
@@ -197,7 +199,9 @@ const Login = () => {
                                             to="/register"
                                             variant="body2"
                                             color="secondary.main"
-                                            sx={{ textDecoration: 'none' }}
+                                            style={{
+                                                textDecoration: 'none',
+                                            }}
                                         >
                                             {' '}
                                             crea una
@@ -224,7 +228,9 @@ const Login = () => {
                                             to="/facial"
                                             variant="body2"
                                             color="secondary.main"
-                                            sx={{ textDecoration: 'none' }}
+                                            style={{
+                                                textDecoration: 'none',
+                                            }}
                                         >
                                             <Button
                                                 variant="contained"

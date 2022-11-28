@@ -64,7 +64,10 @@ function ResponsiveDrawer(props) {
             <Divider />
             <List>
                 {/* INICIO */}
-                <Link to={'/'}>
+                <Link
+                    to={'/'}
+                    style={{ textDecoration: 'none', color: '#000' }}
+                >
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
@@ -76,7 +79,10 @@ function ResponsiveDrawer(props) {
                 </Link>
 
                 {/* GRUPOS */}
-                <Link to={'/group'}>
+                <Link
+                    to={'/group'}
+                    style={{ textDecoration: 'none', color: '#000' }}
+                >
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
@@ -88,7 +94,10 @@ function ResponsiveDrawer(props) {
                 </Link>
 
                 {/* RUTAS */}
-                <Link to={'/rutas'}>
+                <Link
+                    to={'/rutas'}
+                    style={{ textDecoration: 'none', color: '#000' }}
+                >
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
@@ -102,27 +111,34 @@ function ResponsiveDrawer(props) {
             <Divider />
             <List>
                 {/* CONFIGURACIÓN */}
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <Settings color="#000" />
-                        </ListItemIcon>
-                        <ListItemText> Configuración </ListItemText>
-                    </ListItemButton>
-                </ListItem>
+                <Link
+                    to={'/settings'}
+                    style={{ textDecoration: 'none', color: '#000' }}
+                >
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <Settings color="#000" />
+                            </ListItemIcon>
+                            <ListItemText> Configuración </ListItemText>
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
             </List>
-            
-            {isLogged && <List>
-                {/* CERRAR SESIÓN */}
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <LogOut color="#000" />
-                        </ListItemIcon>
-                        <ListItemText> Cerrar Sesión </ListItemText>
-                    </ListItemButton>
-                </ListItem>
-            </List>}
+
+            {isLogged && (
+                <List>
+                    {/* CERRAR SESIÓN */}
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <LogOut color="#000" />
+                            </ListItemIcon>
+                            <ListItemText> Cerrar Sesión </ListItemText>
+                        </ListItemButton>
+                    </ListItem>
+                </List>
+            )}
         </div>
     )
 

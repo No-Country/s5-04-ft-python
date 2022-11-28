@@ -30,7 +30,7 @@ const CardGroups = ({ item }) => {
                     borderColor: '#bbb8b8',
                     padding: '5px',
                 }}
-                maxWidth="386px"
+                // maxWidth="386px"
             >
                 <CardMedia
                     height="200"
