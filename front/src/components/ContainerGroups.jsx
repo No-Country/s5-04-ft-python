@@ -6,6 +6,7 @@ const ContainerGroups = () => {
     console.log(groups)
     return (
         <Grid
+            container
             display="grid"
             gridTemplateColumns="1fr 1fr 1fr"
             width="100%"

@@ -11,6 +11,7 @@ import ForgotPassword from '../pages/ForgotPassword'
 import ModalVerified from '../components/ModalVerified'
 import CardGroups from '../components/CardGroups'
 import NewGroups from '../components/NewGroups'
+import Settings from '../pages/Settings'
 
 const Router = () => {
     return (
@@ -26,6 +27,7 @@ const Router = () => {
             <Route path="/newGroup" element={<NewGroups />} />
             <Route path="/group/:id" element={<CardGroups />} />
             <Route path="/rutas" element={<Rutas />} />
+            <Route path="/settings" element={<Settings />} />
         </Routes>
     )
 }

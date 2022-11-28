@@ -31,15 +31,17 @@ export const AuthProvider = ({ children }) => {
             const user = JSON.parse(loggedUserJSON)
             setData(user)
             // data.tokens.refresh
-            console.log(data);
+            console.log(data)
         }
-    }, []);
+    }, [])
 
     const createUser = async (values) => {
         try {
             const requestOptions = {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 mode: 'cors',
                 body: JSON.stringify(values),
             }
@@ -72,22 +74,21 @@ export const AuthProvider = ({ children }) => {
             await fetch(`${API_ROUTE}/auth/login/`, requestOptions)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data)
+                    // console.log(data.tokens)
                     setIsLogged(true)
                     setUserName(data.username)
                     localStorage.setItem('tokens', JSON.stringify(data))
                 })
-                Toast.fire({
-                    icon: 'success',
-                    title: `Usuario loguado satisfactoriamente!`,
-                })
-            } catch (error) {
-                console.log(error)
-            } finally {
-                setLoading(false)
-            }
+            Toast.fire({
+                icon: 'success',
+                title: `Usuario loguado satisfactoriamente!`,
+            })
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false)
         }
-        
+    }
 
     const signOut = async (values) => {
         try {
@@ -101,11 +102,10 @@ export const AuthProvider = ({ children }) => {
             await fetch(`${API_ROUTE}/auth/logout/`, requestOptions)
                 .then((response) => response.json())
                 .then((data) => {
-                    // console.log(data.tokens.refresh)
+                    // console.log(localStorage.getItem('tokens'))
                     setIsLogged(false)
                     localStorage.removeItem('tokens')
                 })
-                
         } catch (error) {
             console.log(error)
         } finally {

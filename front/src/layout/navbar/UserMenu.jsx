@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
 const UserMenu = () => {
-    const { isLogged, setIsLogged, username } = useAuth()
+    const { isLogged, setIsLogged, username, signOut } = useAuth()
 
     const [menuItems, setMenuItems] = useState(['Profile', 'Logout'])
     const navigate = useNavigate()
@@ -32,7 +32,7 @@ const UserMenu = () => {
     //         : setMenuItems(['Profile', 'Logout'])
     // }, [userInfo.isAdmin])
 
-    const handleClick = (setting) => {
+    const handleClick = (setting, values) => {
         switch (setting) {
             case 'Profile':
                 // navigate('/profile')
@@ -42,6 +42,7 @@ const UserMenu = () => {
                 break
             case 'Logout':
                 setIsLogged(false)
+                signOut(values)
                 // dispatch(logout())
                 navigate('/')
 
