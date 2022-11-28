@@ -15,7 +15,7 @@ const ModalCheck = () => {
             }}
         >
             <Stack>
-                <Stack gap="2rem">
+                <Stack justifyContent="center" gap="2rem">
                     <Typography
                         fontSize="24px"
                         fontFamily="Sora"
@@ -38,21 +38,8 @@ const ModalCheck = () => {
                         Te hemos enviado un email a {dataAuth?.email} con un
                         enlace para verificar tu cuenta. Si no has recibido el
                         email después de unos minutos, por favor revisa tu
-                        carpeta de spam
+                        carpeta de spam.
                     </Typography>
-                    <Stack alignItems="center">
-                        <Button
-                            sx={{
-                                color: '#049AAA',
-                                backgroundColor: 'white',
-                                border: '1px solid',
-                                borderColor: '#049AAA',
-                                padding: '13px',
-                            }}
-                        >
-                            Reenviar Email
-                        </Button>
-                    </Stack>
                 </Stack>
             </Stack>
         </Box>
