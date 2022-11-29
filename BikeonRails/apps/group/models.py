@@ -26,7 +26,7 @@ class BikeGroupsModel(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     image = models.ImageField(upload_to='group/', default='group.png', blank=True, null=True)
-    city = models.CharField(max_length=255, blank=True, null=True)
+    city= models.CharField(max_length=255, blank=True, null=True)
     event = models.ForeignKey(EventModel, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
