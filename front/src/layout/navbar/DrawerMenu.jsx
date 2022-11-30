@@ -25,7 +25,7 @@ const drawerWidth = 240
 function ResponsiveDrawer(props) {
     const { window } = props
     const [mobileOpen, setMobileOpen] = React.useState(false)
-    const { isLogged, setIsLogged, username, signOut, data} = useAuth()
+    const { isLogged, setIsLogged, username, signOut, data } = useAuth()
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen)
@@ -44,9 +44,8 @@ function ResponsiveDrawer(props) {
             default:
                 break
         }
-        
     }
-
+    console.log(data)
     const drawer = (
         <div>
             <Link to={'/'}>
@@ -58,7 +57,9 @@ function ResponsiveDrawer(props) {
 
             {/* <Toolbar /> */}
             <Stack width={'100%'} padding="1rem">
-                {!isLogged || data?.tokens ? (
+                {data?.username ? (
+                    <UserMenu />
+                ) : (
                     <Button
                         variant="contained"
                         component={Link}
@@ -72,8 +73,6 @@ function ResponsiveDrawer(props) {
                     >
                         Iniciar Sesión
                     </Button>
-                ) : (
-                    <UserMenu />
                 )}
             </Stack>
 

@@ -44,6 +44,21 @@ const HomePage = () => {
                 >
                     Actividad
                 </Typography>
+                <Stack alignItems="center" marginY="4rem">
+                    <img
+                        style={{ height: '200px', width: '200px' }}
+                        src="https://res.cloudinary.com/dzxsorvsv/image/upload/v1669736339/Im%C3%A1genes%20UX%20UI/Default/empty_fbhlvk.png"
+                        alt="activity"
+                    />
+                    <Typography
+                        fontSize="20px"
+                        fontFamily="Sora"
+                        variant="h5"
+                        fontWeight="600"
+                    >
+                        Aun no hay actividad
+                    </Typography>
+                </Stack>
             </Stack>
             <Stack>
                 <Typography>Tu proximo evento</Typography>

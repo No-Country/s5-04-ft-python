@@ -24,7 +24,6 @@ export const AuthProvider = ({ children }) => {
     const [username, setUserName] = useState('')
     const [isLogged, setIsLogged] = useState(false)
     const [loading, setLoading] = useState(false)
-    // console.log(dataAuth)
 
     // useEffect(() => {
     //     async function preload() {
@@ -33,39 +32,33 @@ export const AuthProvider = ({ children }) => {
     //     preload()
     // }, [])
 
-    useEffect(() => {
-        async function preload() {
-            await loadStorageData()
-        }
-        preload()
-    }, [])
-
-    const loadStorageData = async () => {
-        try {
-            const authDataSerialized = await localStorage.getItem('auth_tokens')
-            if (authDataSerialized) {
-                const authDataToken = JSON.parse(authDataSerialized)
-                setData(authDataToken)
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     // useEffect(() => {
-    //     const loggedUserJSON = localStorage.getItem('auth_tokens')
-    //     if (loggedUserJSON) {
-    //         const user = JSON.parse(loggedUserJSON)
-    //         setData(user)
-    //         // data.auth_tokens.refresh
-    //         // console.log(data.auth_tokens.refresh)
+    //     async function preload() {
+    //         await loadStorageData()
     //     }
-
-    //     if (data.tokens) {
-    //         setIsLogged(true)
-    //     }
+    //     preload()
     // }, [])
 
+    // const loadStorageData = async () => {
+    //     try {
+    //         const authDataSerialized = await localStorage.getItem('auth_tokens')
+    //         if (authDataSerialized) {
+    //             const authDataToken = JSON.parse(authDataSerialized)
+    //             setData(authDataToken)
+    //         }
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+
+    useEffect(() => {
+        const loggedUserJSON = localStorage.getItem('auth_tokens')
+        if (loggedUserJSON) {
+            const authDataToken = JSON.parse(loggedUserJSON)
+            setData(authDataToken)
+        }
+        setIsLogged(true)
+    }, [])
     console.log(data)
 
     const createUser = async (values) => {
@@ -113,10 +106,10 @@ export const AuthProvider = ({ children }) => {
                 .then((data) => {
                     // console.log(data.auth_tokens)
                     setIsLogged(true)
+                    setDataAuth(data)
+                    setData(data)
                     setUserName(data.username)
                     localStorage.setItem('auth_tokens', JSON.stringify(data))
-                    setData(data.tokens.access)
-                    console.log(data.tokens.access)
                 })
             navigate('/')
             Toast.fire({
@@ -133,7 +126,6 @@ export const AuthProvider = ({ children }) => {
             setLoading(false)
         }
     }
-
     const signOut = async (values) => {
         try {
             const requestOptions = {
@@ -198,6 +190,7 @@ export const AuthProvider = ({ children }) => {
                 loading,
                 forgotPassword,
                 data,
+                setData,
             }}
         >
             {children}
