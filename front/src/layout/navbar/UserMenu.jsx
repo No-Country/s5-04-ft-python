@@ -38,7 +38,7 @@ const UserMenu = () => {
                 // navigate('/profile')
                 break
             case 'Admin Dashboard':
-                navigate('/admin')
+                // navigate('/admin')
                 break
             case 'Logout':
                 setIsLogged(false)
