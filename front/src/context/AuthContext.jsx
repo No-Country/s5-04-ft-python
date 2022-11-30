@@ -8,6 +8,13 @@ export const API_ROUTE = import.meta.env.VITE_APP_API_ROUTE
 
 export const AuthContext = createContext({})
 
+const initialValues = {
+    email: '',
+    id: '',
+    tokens: '',
+    username: '',
+}
+
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
 
@@ -19,21 +26,47 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(false)
     // console.log(dataAuth)
 
-    useEffect(() => {
-        async function preload() {
-            if (dataAuth.token) await refreshToken()
-        }
-    }, [])
+    // useEffect(() => {
+    //     async function preload() {
+    //         if (dataAuth.token) await refreshToken()
+    //     }
+    //     preload()
+    // }, [])
 
     useEffect(() => {
-        const loggedUserJSON = localStorage.getItem('tokens')
-        if (loggedUserJSON) {
-            const user = JSON.parse(loggedUserJSON)
-            setData(user)
-            // data.tokens.refresh
-            console.log(data)
+        async function preload() {
+            await loadStorageData()
         }
+        preload()
     }, [])
+
+    const loadStorageData = async () => {
+        try {
+            const authDataSerialized = await localStorage.getItem('auth_tokens')
+            if (authDataSerialized) {
+                const authDataToken = JSON.parse(authDataSerialized)
+                setData(authDataToken)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // useEffect(() => {
+    //     const loggedUserJSON = localStorage.getItem('auth_tokens')
+    //     if (loggedUserJSON) {
+    //         const user = JSON.parse(loggedUserJSON)
+    //         setData(user)
+    //         // data.auth_tokens.refresh
+    //         // console.log(data.auth_tokens.refresh)
+    //     }
+
+    //     if (data.tokens) {
+    //         setIsLogged(true)
+    //     }
+    // }, [])
+
+    console.log(data)
 
     const createUser = async (values) => {
         try {
@@ -56,6 +89,10 @@ export const AuthProvider = ({ children }) => {
             })
             // navigate('/login')
         } catch (error) {
+            Toast.fire({
+                icon: 'error',
+                title: `Ocurrió un error al crear tu cuenta`,
+            })
             console.log(error)
         } finally {
             setLoading(false)
@@ -74,16 +111,23 @@ export const AuthProvider = ({ children }) => {
             await fetch(`${API_ROUTE}/auth/login/`, requestOptions)
                 .then((response) => response.json())
                 .then((data) => {
-                    // console.log(data.tokens)
+                    // console.log(data.auth_tokens)
                     setIsLogged(true)
                     setUserName(data.username)
-                    localStorage.setItem('tokens', JSON.stringify(data))
+                    localStorage.setItem('auth_tokens', JSON.stringify(data))
+                    setData(data.tokens.access)
+                    console.log(data.tokens.access)
                 })
+            navigate('/')
             Toast.fire({
                 icon: 'success',
-                title: `Usuario loguado satisfactoriamente!`,
+                title: `Usuario logueado satisfactoriamente!`,
             })
         } catch (error) {
+            Toast.fire({
+                icon: 'error',
+                title: `Ocurrió un error al iniciar sesión`,
+            })
             console.log(error)
         } finally {
             setLoading(false)
@@ -101,10 +145,10 @@ export const AuthProvider = ({ children }) => {
 
             await fetch(`${API_ROUTE}/auth/logout/`, requestOptions)
                 .then((response) => response.json())
-                .then((data) => {
-                    // console.log(localStorage.getItem('tokens'))
+                .then(() => {
+                    // console.log(localStorage.getItem('auth_tokens'))
                     setIsLogged(false)
-                    localStorage.removeItem('tokens')
+                    localStorage.removeItem('auth_tokens')
                 })
         } catch (error) {
             console.log(error)
@@ -153,6 +197,7 @@ export const AuthProvider = ({ children }) => {
                 dataAuth,
                 loading,
                 forgotPassword,
+                data,
             }}
         >
             {children}
