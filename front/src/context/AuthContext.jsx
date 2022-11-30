@@ -20,36 +20,8 @@ export const AuthProvider = ({ children }) => {
 
     const [dataAuth, setDataAuth] = useState({})
     const [data, setData] = useState({})
-    const [userRol, setUserRol] = useState('')
-    const [username, setUserName] = useState('')
     const [isLogged, setIsLogged] = useState(false)
     const [loading, setLoading] = useState(false)
-
-    // useEffect(() => {
-    //     async function preload() {
-    //         if (dataAuth.token) await refreshToken()
-    //     }
-    //     preload()
-    // }, [])
-
-    // useEffect(() => {
-    //     async function preload() {
-    //         await loadStorageData()
-    //     }
-    //     preload()
-    // }, [])
-
-    // const loadStorageData = async () => {
-    //     try {
-    //         const authDataSerialized = await localStorage.getItem('auth_tokens')
-    //         if (authDataSerialized) {
-    //             const authDataToken = JSON.parse(authDataSerialized)
-    //             setData(authDataToken)
-    //         }
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
 
     useEffect(() => {
         const loggedUserJSON = localStorage.getItem('auth_tokens')
@@ -57,9 +29,7 @@ export const AuthProvider = ({ children }) => {
             const authDataToken = JSON.parse(loggedUserJSON)
             setData(authDataToken)
         }
-        setIsLogged(true)
     }, [])
-    console.log(data)
 
     const createUser = async (values) => {
         try {
@@ -108,7 +78,6 @@ export const AuthProvider = ({ children }) => {
                     setIsLogged(true)
                     setDataAuth(data)
                     setData(data)
-                    setUserName(data.username)
                     localStorage.setItem('auth_tokens', JSON.stringify(data))
                 })
             navigate('/')
@@ -185,7 +154,6 @@ export const AuthProvider = ({ children }) => {
                 signOut,
                 isLogged,
                 setIsLogged,
-                username,
                 dataAuth,
                 loading,
                 forgotPassword,
