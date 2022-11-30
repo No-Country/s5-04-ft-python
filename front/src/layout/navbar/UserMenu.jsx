@@ -12,7 +12,8 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
 const UserMenu = () => {
-    const { isLogged, setIsLogged, username, signOut } = useAuth()
+    const { isLogged, setIsLogged, username, signOut, data, setData } =
+        useAuth()
 
     const [menuItems, setMenuItems] = useState(['Profile', 'Logout'])
     const navigate = useNavigate()
@@ -41,6 +42,7 @@ const UserMenu = () => {
                 // navigate('/admin')
                 break
             case 'Logout':
+                setData({})
                 setIsLogged(false)
                 signOut(values)
                 // dispatch(logout())
@@ -62,12 +64,12 @@ const UserMenu = () => {
                     sx={{ p: 0, px: 1 }}
                 >
                     <Avatar alt={username}>
-                        {username.charAt(0).toUpperCase()}
+                        {data?.username?.charAt(0).toUpperCase()}
                     </Avatar>
                 </Button>
             </Tooltip>
-            <Typography>{username.toUpperCase()}</Typography>
-            <Typography sx={{ color: '#565A5C' }}>@{username}</Typography>
+            <Typography>{data?.username?.toUpperCase()}</Typography>
+            <Typography sx={{ color: '#565A5C' }}>@{data?.username}</Typography>
             <Menu
                 sx={{ mt: '45px' }}
                 id="menu-appbar"

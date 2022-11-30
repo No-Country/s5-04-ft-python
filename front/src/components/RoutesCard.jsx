@@ -47,12 +47,19 @@ const RoutesCard = ({ item }) => {
                     >
                         {item.groupName}
                     </Typography>
-                    <Typography marginY="8px" fontSize="16px">
+                    <Typography
+                        display="flex"
+                        alignItems="center"
+                        marginY="8px"
+                        fontSize="16px"
+                        color="#333333"
+                        sx={{ opacity: '0.9' }}
+                    >
                         <PlaceIcon />
                         {item.place}
                     </Typography>
 
-                    <Stack direction="row" gap="10px">
+                    <Stack direction="row" gap="10px" alignItems="center">
                         <Box
                             sx={{
                                 backgroundColor: 'red',
@@ -70,11 +77,19 @@ const RoutesCard = ({ item }) => {
                                 {item?.difficulty}Intermedio
                             </Typography>
                         </Box>
-                        <Typography>
+                        <Typography
+                            color="#333333"
+                            sx={{ opacity: '0.9' }}
+                            display="flex"
+                        >
                             <FlagIcon style={{ color: 'black' }} />
                             {item?.distance}20km
                         </Typography>
-                        <Typography>
+                        <Typography
+                            color="#333333"
+                            sx={{ opacity: '0.9' }}
+                            display="flex"
+                        >
                             <AccessTimeIcon />
                             {item?.timeTravel}01:45
                         </Typography>

@@ -4,14 +4,32 @@ import * as Yup from 'yup'
 import React from 'react'
 
 const ButtonStyled = styled(Button)({
-    backgroundColor: '#F51D38',
-    color: 'white',
+    backgroundColor: 'white',
+    color: '#ff001e',
+    border: '1px solid',
+    borderColor: '#ff001e',
     width: '100%',
     marginTop: '18px',
     '&:hover': {
         backgroundColor: '#ff001e',
+        border: '1px solid',
         borderColor: '#ff001e',
         boxShadow: 'none',
+        color: 'white',
+    },
+})
+
+const ButtonStyledCancel = styled(Button)({
+    backgroundColor: 'white',
+    color: '#049AAA',
+    border: '1px solid',
+    width: '30%',
+    marginTop: '18px',
+    '&:hover': {
+        backgroundColor: '#049AAA',
+        borderColor: '#049AAA',
+        boxShadow: 'none',
+        color: 'white',
     },
 })
 
@@ -154,7 +172,9 @@ const NewGroups = () => {
                                 </Typography>
                                 <TextField
                                     sx={{ width: '100%' }}
+                                    multiline
                                     rows={5}
+                                    maxRows={8}
                                     label="Describe de qué trata tu grupo..."
                                     type="text"
                                     name="description"
@@ -165,6 +185,7 @@ const NewGroups = () => {
                                         errors.description
                                     }
                                     size="small"
+                                    inputProps={{ maxLength: 300 }}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     value={values.description}
@@ -179,7 +200,12 @@ const NewGroups = () => {
                                     Quedan 101 caracteres
                                 </Typography>
                             </Stack>
-                            <ButtonStyled>Crear Grupo</ButtonStyled>
+                            <Stack direction="row" gap="1rem">
+                                <ButtonStyled>Crear Grupo</ButtonStyled>
+                                <ButtonStyledCancel>
+                                    Cancelar
+                                </ButtonStyledCancel>
+                            </Stack>
                         </Form>
                     )}
                 </Formik>
