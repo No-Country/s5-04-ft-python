@@ -12,6 +12,8 @@ import ModalVerified from '../components/ModalVerified'
 import CardGroups from '../components/CardGroups'
 import NewGroups from '../components/NewGroups'
 import Settings from '../pages/Settings'
+import NewRoute from '../components/NewRoute'
+import GroupDetail from '../pages/GroupDetail'
 
 const Router = () => {
     return (
@@ -26,7 +28,9 @@ const Router = () => {
             <Route path="/group" element={<Grupos />} />
             <Route path="/newGroup" element={<NewGroups />} />
             <Route path="/group/:id" element={<CardGroups />} />
+            <Route path="/group-detail/:id" element={<GroupDetail />} />
             <Route path="/rutas" element={<Rutas />} />
+            <Route path="/newRoute" element={<NewRoute />} />
             <Route path="/settings" element={<Settings />} />
         </Routes>
     )
