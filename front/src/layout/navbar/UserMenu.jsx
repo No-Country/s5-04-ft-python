@@ -12,10 +12,9 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
 const UserMenu = () => {
-    const { isLogged, setIsLogged, username, signOut, data, setData } =
-        useAuth()
+    const { setIsLogged, signOut, data, setData } = useAuth()
 
-    const [menuItems, setMenuItems] = useState(['Profile', 'Logout'])
+    const [menuItems, setMenuItems] = useState(['Profile' /*'Logout'*/])
     const navigate = useNavigate()
     const [anchorElUser, setAnchorElUser] = useState(null)
 
@@ -41,14 +40,13 @@ const UserMenu = () => {
             case 'Admin Dashboard':
                 // navigate('/admin')
                 break
-            case 'Logout':
-                setData({})
-                setIsLogged(false)
-                signOut(values)
-                // dispatch(logout())
-                navigate('/')
+            // case 'Logout':
+            //     setData({})
+            //     setIsLogged(false)
+            //     signOut(values)
+            //     navigate('/')
 
-                break
+            //     break
 
             default:
                 break
@@ -63,7 +61,7 @@ const UserMenu = () => {
                     // startIcon={<IoMdArrowDropdown color="black" />}
                     sx={{ p: 0, px: 1 }}
                 >
-                    <Avatar alt={username}>
+                    <Avatar alt={data?.username}>
                         {data?.username?.charAt(0).toUpperCase()}
                     </Avatar>
                 </Button>

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { Toast } from '../utils/swalToast'
 import { createContext, useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
@@ -24,12 +23,24 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        const loggedUserJSON = localStorage.getItem('auth_tokens')
-        if (loggedUserJSON) {
-            const authDataToken = JSON.parse(loggedUserJSON)
-            setData(authDataToken)
+        async function preload() {
+            await loadStorageData()
+            if (data.tokens) await refreshTokens()
         }
+        preload()
     }, [])
+
+    const loadStorageData = async () => {
+        try {
+            const authDataSerialized = await localStorage.getItem('auth_tokens')
+            if (authDataSerialized) {
+                const authDataToken = JSON.parse(authDataSerialized)
+                setData(authDataToken)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const createUser = async (values) => {
         try {
@@ -143,6 +154,25 @@ export const AuthProvider = ({ children }) => {
             console.log(error)
         } finally {
             setLoading(false)
+        }
+    }
+
+    const refreshTokens = async () => {
+        try {
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                mode: 'cors',
+                body: JSON.stringify({ refresh: data.tokens.refresh }),
+            }
+            let response = await fetch(
+                `${API_ROUTE}/auth/token/refresh/`,
+                requestOptions
+            )
+            let data = await response.json()
+            setData(data)
+        } catch (error) {
+            console.log(error)
         }
     }
 
