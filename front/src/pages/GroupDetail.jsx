@@ -4,7 +4,7 @@ import GroupCover from '../components/GroupCover'
 
 const GroupDetail = () => {
   return (
-    <Stack justifyContent={'center'} alignItems={'center'}>
+    <Stack>
         <GroupCover/>
     </Stack>
   )
