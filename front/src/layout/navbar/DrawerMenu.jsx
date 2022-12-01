@@ -13,8 +13,15 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
-import { Button, Stack, TextField } from '@mui/material'
-import { Home, LogOut, Map, Settings, Users } from 'react-feather'
+import {
+    Button,
+    Input,
+    InputAdornment,
+    Stack,
+    TextField,
+    Typography,
+} from '@mui/material'
+import { Home, LogOut, Map, Search, Settings, Users } from 'react-feather'
 import HomePage from '../../pages/HomePage'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
@@ -118,6 +125,52 @@ function ResponsiveDrawer(props) {
                     </ListItem>
                 </Link>
             </List>
+            {data?.username && (
+                <Stack>
+                    <Divider />
+                    <Typography sx={{ fontSize: '14px', color: '#999' }} px={'1rem'}>
+                        Tus Grupos
+                    </Typography>
+                    <List>
+                        {/* TUS GRUPOS */}
+                        <Link
+                            to={`/group-detail/${data?.id}/`}
+                            style={{ textDecoration: 'none', color: '#000' }}
+                        >
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <Stack
+                                        direction="row"
+                                        justifyContent={'space-between'}
+                                        width={'90%'}
+                                    >
+                                        <Stack width={'3rem'}>
+                                            <img
+                                                src="https://res.cloudinary.com/dzxsorvsv/image/upload/v1668611503/Im%C3%A1genes%20UX%20UI/Default/group_vqxte2.png"
+                                                alt="img"
+                                            />
+                                        </Stack>
+                                        <Typography sx={{ fontSize: '12px' }}>
+                                            {' '}
+                                            Ciclistas Argentinos{' '}
+                                            <Typography
+                                                sx={{
+                                                    fontSize: '10px',
+                                                    color: '#999',
+                                                }}
+                                            >
+                                                {' '}
+                                                Miembro
+                                            </Typography>
+                                        </Typography>
+                                    </Stack>
+                                </ListItemButton>
+                            </ListItem>
+                        </Link>
+                    </List>
+                </Stack>
+            )}
+
             <Divider />
             <List>
                 {/* CONFIGURACIÓN */}
@@ -182,11 +235,16 @@ function ResponsiveDrawer(props) {
                     >
                         {/* Agregar Icono de Busqueda (Lupa) */}
 
-                        <TextField
+                        <Input
                             id="outlined-basic"
                             placeholder={`Buscar en BikeLovers...`}
                             variant="outlined"
                             size="small"
+                            startAdornment={
+                                <InputAdornment position="start">
+                                    <Search />
+                                </InputAdornment>
+                            }
                         />
                     </Stack>
                 </Toolbar>

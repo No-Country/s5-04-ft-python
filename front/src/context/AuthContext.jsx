@@ -7,13 +7,6 @@ export const API_ROUTE = import.meta.env.VITE_APP_API_ROUTE
 
 export const AuthContext = createContext({})
 
-const initialValues = {
-    email: '',
-    id: '',
-    tokens: '',
-    username: '',
-}
-
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
 
