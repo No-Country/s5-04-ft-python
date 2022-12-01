@@ -14,7 +14,7 @@ import { useAuth } from '../../hooks/useAuth'
 const UserMenu = () => {
     const { setIsLogged, signOut, data, setData } = useAuth()
 
-    const [menuItems, setMenuItems] = useState(['Profile', 'Logout'])
+    const [menuItems, setMenuItems] = useState(['Profile' /*'Logout'*/])
     const navigate = useNavigate()
     const [anchorElUser, setAnchorElUser] = useState(null)
 
@@ -40,14 +40,13 @@ const UserMenu = () => {
             case 'Admin Dashboard':
                 // navigate('/admin')
                 break
-            case 'Logout':
-                setData({})
-                setIsLogged(false)
-                signOut(values)
-                // dispatch(logout())
-                navigate('/')
+            // case 'Logout':
+            //     setData({})
+            //     setIsLogged(false)
+            //     signOut(values)
+            //     navigate('/')
 
-                break
+            //     break
 
             default:
                 break

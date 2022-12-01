@@ -16,7 +16,7 @@ import Toolbar from '@mui/material/Toolbar'
 import { Button, Stack, TextField } from '@mui/material'
 import { Home, LogOut, Map, Settings, Users } from 'react-feather'
 import HomePage from '../../pages/HomePage'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import UserMenu from './UserMenu'
 
@@ -25,25 +25,20 @@ const drawerWidth = 240
 function ResponsiveDrawer(props) {
     const { window } = props
     const [mobileOpen, setMobileOpen] = React.useState(false)
-    const { isLogged, setIsLogged, username, signOut, data } = useAuth()
+    const [menuItems, setMenuItems] = React.useState(['Cerrar Sesión'])
+    const { setIsLogged, signOut, data, setData } = useAuth()
+
+    const navigate = useNavigate()
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen)
     }
 
-    const handleClick = (setting, values) => {
-        switch (setting) {
-            case 'Logout':
-                setIsLogged(false)
-                signOut(values)
-                // dispatch(logout())
-                navigate('/')
-
-                break
-
-            default:
-                break
-        }
+    const handleClick = (values) => {
+        setData({})
+        setIsLogged(false)
+        signOut(values)
+        navigate('/')
     }
     console.log(data)
     const drawer = (
@@ -141,19 +136,19 @@ function ResponsiveDrawer(props) {
                 </Link>
             </List>
 
-            {isLogged && (
-                <List>
-                    {/* CERRAR SESIÓN */}
-                    <ListItem disablePadding>
-                        <ListItemButton onClick={handleClick}>
-                            <ListItemIcon>
-                                <LogOut color="#000" />
-                            </ListItemIcon>
-                            <ListItemText> Cerrar Sesión </ListItemText>
-                        </ListItemButton>
-                    </ListItem>
-                </List>
-            )}
+            {data?.username &&
+                menuItems.map((item) => (
+                    <List key={item}>
+                        <ListItem disablePadding>
+                            <ListItemButton onClick={() => handleClick(item)}>
+                                <ListItemIcon>
+                                    <LogOut color="#000" />
+                                </ListItemIcon>
+                                <ListItemText>{item}</ListItemText>
+                            </ListItemButton>
+                        </ListItem>
+                    </List>
+                ))}
         </div>
     )
 
