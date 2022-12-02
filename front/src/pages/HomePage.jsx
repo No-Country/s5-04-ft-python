@@ -1,8 +1,11 @@
 import { Box, Button, Grid, Stack, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
+import RouteAlert from '../components/RouteAlert'
 import RoutesContainer from '../components/RoutesContainer'
+import { useAuth } from '../hooks/useAuth'
 
 const HomePage = () => {
+    const { data } = useAuth()
     return (
         <Grid
             display="grid"
@@ -24,13 +27,17 @@ const HomePage = () => {
                     >
                         Rutas
                     </Typography>
-                    <Button
-                        component={Link}
-                        to="/newGroup"
-                        sx={{ border: '1px solid red' }}
-                    >
-                        + Crear Nuevo Grupo
-                    </Button>
+                    {data?.username ? (
+                        <Button
+                            component={Link}
+                            to="/newGroup"
+                            sx={{ border: '1px solid red' }}
+                        >
+                            + Crear Nuevo Grupo
+                        </Button>
+                    ) : (
+                        <RouteAlert />
+                    )}
                 </Stack>
                 <Box>
                     <RoutesContainer />

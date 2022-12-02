@@ -25,7 +25,9 @@ const ButtonStyledCancel = styled(Button)({
         color: 'white',
     },
 })
-
+// Nombre, descripcion, id, user_id, eventos{
+// Nombre, descripcion, imagen
+// },
 const GroupCover = () => {
 
     const { data } = useAuth()

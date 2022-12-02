@@ -1,8 +1,12 @@
 import { Box, Button, Grid, Stack, Typography } from '@mui/material'
 import ContainerGroups from '../components/ContainerGroups'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
+import GroupAlert from '../components/GroupAlert'
 
 const Grupos = () => {
+    const { data } = useAuth()
+
     return (
         <Stack marginLeft="16rem">
             <Stack
@@ -19,13 +23,17 @@ const Grupos = () => {
                 >
                     Grupos Sugeridos
                 </Typography>
-                <Button
-                    component={Link}
-                    to="/newGroup"
-                    sx={{ border: '1px solid red' }}
-                >
-                    + Crear Nuevo Grupo
-                </Button>
+                {data?.username ? (
+                    <Button
+                        component={Link}
+                        to="/newGroup"
+                        sx={{ border: '1px solid red' }}
+                    >
+                        + Crear Nuevo Grupo
+                    </Button>
+                ) : (
+                    <GroupAlert />
+                )}
             </Stack>
             <Box width="100%">
                 <ContainerGroups />

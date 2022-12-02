@@ -10,7 +10,11 @@ import {
 } from '@mui/material'
 import React from 'react'
 import { styled } from '@mui/material'
+import { useAuth } from '../hooks/useAuth'
+
 const CardGroups = ({ item }) => {
+    const { data } = useAuth()
+
     const ButtonStyled = styled(Button)({
         backgroundColor: '#F51D38',
         color: 'white',
@@ -57,9 +61,13 @@ const CardGroups = ({ item }) => {
                     <Typography fontSize="16px">{item.members}</Typography>
                 </CardContent>
                 <CardActions>
-                    <ButtonStyled variant="contained">
-                        Unirme al Grupo
-                    </ButtonStyled>
+                    {data?.username ? (
+                        <ButtonStyled variant="contained">
+                            Unirme al Grupo
+                        </ButtonStyled>
+                    ) : (
+                        ''
+                    )}
                 </CardActions>
             </Card>
         </Stack>
