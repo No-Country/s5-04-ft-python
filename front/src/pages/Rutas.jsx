@@ -2,8 +2,11 @@ import React from 'react'
 import { Box, Button, Grid, Stack, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import RoutesContainer from '../components/RoutesContainer'
+import { useAuth } from '../hooks/useAuth'
+import RouteAlert from '../components/RouteAlert'
 
 const Rutas = () => {
+    const { data } = useAuth()
     return (
         <Grid
             display="grid"
@@ -25,19 +28,22 @@ const Rutas = () => {
                     >
                         Rutas
                     </Typography>
-                    <Button
-                        component={Link}
-                        to="/newRoute"
-                        sx={{ border: '1px solid red' }}
-                    >
-                        + Crear Nueva Ruta
-                    </Button>
+                    {data?.username ? (
+                        <Button
+                            component={Link}
+                            to="/newRoute"
+                            sx={{ border: '1px solid red' }}
+                        >
+                            + Crear Nueva Ruta
+                        </Button>
+                    ) : (
+                        <RouteAlert />
+                    )}
                 </Stack>
                 <Box>
                     <RoutesContainer />
                 </Box>
             </Stack>
-            
         </Grid>
     )
 }
