@@ -13,7 +13,8 @@ class EventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EventModel
-        fields = ["id", "title"]
+        fields = ["id", "title", "image",
+                  "description", "start_date", "end_date", "start_route", "end_route"]
 
 
 # class UserSerializer(serializers.ModelSerializer):
