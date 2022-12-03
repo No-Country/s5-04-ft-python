@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "img": "https://res.cloudinary.com/dzxsorvsv/image/upload/v1669736348/Im%C3%A1genes%20UX%20UI/Default/map_vxolm4.jpg",
+        "groupName": "Ciclistas Argentinos",
+        "place": "Recoleta, Buenos Aires",
+        "members": "80 miembros"
+    },
+    {
+        "id": "2",
+        "img": "https://res.cloudinary.com/dzxsorvsv/image/upload/v1669736348/Im%C3%A1genes%20UX%20UI/Default/map_vxolm4.jpg",
+        "groupName": "Ciclistas Argentinos",
+        "place": "Recoleta, Buenos Aires",
+        "members": "80 miembros"
+    },
+    {
+        "id": "3",
+        "img": "https://res.cloudinary.com/dzxsorvsv/image/upload/v1669736348/Im%C3%A1genes%20UX%20UI/Default/map_vxolm4.jpg",
+        "groupName": "Ciclistas Argentinos",
+        "place": "Recoleta, Buenos Aires",
+        "members": "80 miembros"
+    }
+]
