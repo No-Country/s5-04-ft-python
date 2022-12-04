@@ -6,7 +6,7 @@ from apps.accounts.models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["username", "image"]
+        fields = ["id", "username", "image"]
 
 
 class EventSerializer(serializers.ModelSerializer):
