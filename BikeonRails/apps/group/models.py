@@ -22,15 +22,15 @@ class EventModel(models.Model):
 
 
 class BikeGroupsModel(models.Model):
-    user_id = models.ManyToManyField(User)
-    name = models.CharField(max_length=255, unique=True)
+    user_menber_id = models.ManyToManyField(User)
+    name_group = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     image = models.ImageField(upload_to='group/', default='group.png', blank=True, null=True)
     city = models.CharField(max_length=255, blank=True, null=True)
     event = models.ForeignKey(EventModel, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
-        return f"user {self.name}"
+        return f"user {self.name_group}"
 
     class Meta:
         verbose_name = 'Grupo'
@@ -55,3 +55,11 @@ class GroupUsersRolModel(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     group_id = models.ForeignKey(BikeGroupsModel, on_delete=models.CASCADE)
     rol_id = models.ForeignKey(RolesModel, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"user {self.id}"
+
+    class Meta:
+        verbose_name = 'GroupsUserRol'
+        verbose_name_plural = 'GroupsUserRols'
+        ordering = ['id']
