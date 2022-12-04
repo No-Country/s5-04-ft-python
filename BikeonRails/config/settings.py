@@ -39,6 +39,8 @@ LOCAL_APPS = [
     'apps.accounts',
     'apps.group',
     'apps.info',
+    'apps.route',
+   
 ]
 
 THIRD_PARTY_APPS = [

@@ -1,8 +1,6 @@
 from django.db import models
-
+from django.apps import apps
 from apps.accounts.models import User
-
-
 class EventModel(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -11,6 +9,7 @@ class EventModel(models.Model):
     end_route = models.CharField(max_length=255, blank=True, null=True)
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
+    
 
     def __str__(self) -> str:
         return self.title

@@ -12,8 +12,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     lastname = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='group/', default='profile.png', blank=True, null=True)
     email = models.EmailField(max_length=255, unique=True, db_index=True)
-    info_person = models.ForeignKey(InfoPerson, on_delete=models.CASCADE, blank=True, null=True)
-    bicycle = models.ForeignKey(BicycleModels, on_delete=models.CASCADE, blank=True, null=True)
     manager = models.ForeignKey('self', related_name="user", on_delete=models.CASCADE, blank=True, null=True)
 
     is_verified = models.BooleanField(default=False)
@@ -21,7 +19,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    info_person = models.ForeignKey(InfoPerson, on_delete=models.CASCADE, blank=True, null=True)
+    bicycle = models.ForeignKey(BicycleModels, on_delete=models.CASCADE, blank=True, null=True)
     objects = MyUserManager()
 
     USERNAME_FIELD = 'email'
