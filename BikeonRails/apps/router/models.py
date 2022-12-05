@@ -31,7 +31,7 @@ class UserRouterModels(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.route_id
+        return str(self.route_id)
 
     class Meta:
         verbose_name = "UserRouter"
