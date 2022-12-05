@@ -30,7 +30,9 @@ $python manage.py runserver
 | *POST* | ```/auth/logout/```      | _Logout user_             | _All users_|
 | *POST* | ```/auth/register/```      | _Register new user_       | _All users_|
 | *GET*  | ```/auth/email-verify/```      | _Verify email user_       | _All users_|
-| *POST* | ```/auth/request-reset-email/```      | _Request reset email_     | _All users_|
-| *GET*  | ```/auth/password-reset/<uidb64>/<token>/```   | _Validation Token_        |_All users_|
-| *POST* | ```/auth/password-reset-complete/```   | _Reset password of email_ |_All users_|
-| *POST* | ```/auth/token/refresh//```     | _Token refresh_           |_All users_|
+| *POST* | ```/auth/request-reset-email/```   | _Request reset email_     | _All users_|
+| *GET*  | ```/auth/password-reset/<uidb64>/<token>/``` | _Validation Token_        |_All users_|
+| *POST* | ```/auth/password-reset-complete/``` | _Reset password of email_ |_All users_|
+| *POST* | ```/auth/token/refresh/```     | _Token refresh_           |_All users_|
+| *GET*  | ```/groups/group/```     | _Token refresh_           |_All users_|
+| *GET*  | ```/routes/route/```     | _Token refresh_           |_All users_|
