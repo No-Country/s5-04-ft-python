@@ -27,11 +27,11 @@ class EventSerializer(serializers.ModelSerializer):
 
 class BikeGroupsSerializer(serializers.ModelSerializer):
     event = EventSerializer(read_only=True)
-    user_menber_id = UserSerializer(many=True)
+    user_member_id = UserSerializer(many=True)
 
     class Meta:
         model = BikeGroupsModel
-        fields = ["id", "user_menber_id", "name_group", "description", "city", "image", "event"]
+        fields = ["user_member_id", "name_group", "description", "city", "image", "event"]
 
 
 class GroupUsersRolSerializer(serializers.ModelSerializer):

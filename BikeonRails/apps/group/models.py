@@ -22,7 +22,7 @@ class EventModel(models.Model):
 
 
 class BikeGroupsModel(models.Model):
-    user_menber_id = models.ManyToManyField(User)
+    user_member_id = models.ManyToManyField(User)
     name_group = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     image = models.ImageField(upload_to='group/', default='group.png', blank=True, null=True)
