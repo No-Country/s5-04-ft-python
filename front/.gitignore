@@ -24,3 +24,4 @@ yarn-lock.json
 *.njsproj
 *.sln
 *.sw?
+.vercel
