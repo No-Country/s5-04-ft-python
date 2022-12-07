@@ -37,5 +37,7 @@ $python manage.py runserver
 | *GET*    | ```/groups/group/```                         | _List Groups_             | _All users_  |
 | *POST*   | ```/groups/group/```                         | _Create Group_            | _All users_  |
 | *PUT*    | ```/groups/group/<id>/```                    | _Update Group_            | _User Admin_ |
-| *DELETE* | ```/groups/group/<id>/```                    | _Delete Group_                 | _User Admin_ |
-| *GET*    | ```/routes/route/```                         | _Token refresh_           | _All users_  |
+| *DELETE* | ```/groups/group/<id>/```                    | _Delete Group_            | _User Admin_ |
+| *GET*    | ```/routes/route/```                         | _List Route_              | _All users_  |
+| *POST*   | ```/routes/route/<id>/```                    | _Create Route_            | _All users_  |
+| *PUT*    | ```/routes/route/<id>/```                    | _Update Route_              | _All users_  |
