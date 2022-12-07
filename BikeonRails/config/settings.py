@@ -149,13 +149,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 # cors header config
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-]
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+# ]
 
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:5173",
-]
+# CORS_ORIGIN_WHITELIST = [
+#     "http://localhost:5173",
+# ]
 
 STATIC_URL = 'static/'
 
