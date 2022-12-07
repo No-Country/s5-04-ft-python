@@ -26,6 +26,7 @@ import HomePage from '../../pages/HomePage'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import UserMenu from './UserMenu'
+import Swal from 'sweetalert2'
 
 const drawerWidth = 240
 
@@ -42,10 +43,20 @@ function ResponsiveDrawer(props) {
     }
 
     const handleClick = (values) => {
-        setData({})
-        setIsLogged(false)
-        signOut(values)
-        navigate('/')
+        Swal.fire({
+            title: `¿Seguro queres cerrar sesión?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Cerrar Sesion',
+            denyButtonText: 'Volver',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setData({})
+                setIsLogged(false)
+                signOut(values)
+                navigate('/')
+            }
+        })
     }
     console.log(data)
     const drawer = (
@@ -128,7 +139,10 @@ function ResponsiveDrawer(props) {
             {data?.username && (
                 <Stack>
                     <Divider />
-                    <Typography sx={{ fontSize: '14px', color: '#999' }} px={'1rem'}>
+                    <Typography
+                        sx={{ fontSize: '14px', color: '#999' }}
+                        px={'1rem'}
+                    >
                         Tus Grupos
                     </Typography>
                     <List>
