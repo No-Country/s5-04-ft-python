@@ -10,7 +10,6 @@ class RouteModels(models.Model):
         ('Deficult', 'Deficult'),
     )
 
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     name_route = models.CharField(max_length=150, unique=True)
     distance = models.CharField(max_length=150, blank=True, null=True)
     time = models.DateTimeField(blank=True, null=True)
@@ -27,16 +26,16 @@ class RouteModels(models.Model):
         ordering = ["id"]
 
 
-# class UserRouterModels(models.Model):
-#     route_id = models.ForeignKey(RouteModels, on_delete=models.CASCADE)
-#     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return str(self.route_id)
-#
-#     class Meta:
-#         verbose_name = "UserRouter"
-#         verbose_name_plural = "UserRoutes"
-#         ordering = ["id"]
+class UserRouterModels(models.Model):
+    route_id = models.ForeignKey(RouteModels, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.route_id)
+
+    class Meta:
+        verbose_name = "UserRouter"
+        verbose_name_plural = "UserRoutes"
+        ordering = ["id"]
 
 

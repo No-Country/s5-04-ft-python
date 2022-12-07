@@ -1,6 +1,7 @@
 from django.contrib import admin
 #
-from apps.router.models import RouteModels
+from apps.router.models import RouteModels, UserRouterModels
+
 #
 admin.site.register(RouteModels)
-# admin.site.register(UserRouterModels)
+admin.site.register(UserRouterModels)
