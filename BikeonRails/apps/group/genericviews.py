@@ -29,7 +29,7 @@ class GroupsViewset(ModelViewSet):
     def perform_create(self, serializer):
         group = serializer.save()
         user = self.request.user
-        GroupUsersRolModel(
+        GroupUsersRolModel.objects.create(
             user_id=user,
             group_id=group
         )

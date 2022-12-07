@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from apps.accounts.models import User
-from apps.group.models import BikeGroupsModel, EventModel
+from apps.group.models import (BikeGroupsModel, EventModel, GroupUsersRolModel)
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -20,8 +20,16 @@ class EventSerializer(serializers.ModelSerializer):
 
 class BikeGroupsSerializer(serializers.ModelSerializer):
     event = EventSerializer(read_only=True)
-    # user_member_id = UserSerializer(many=True)
 
     class Meta:
         model = BikeGroupsModel
-        fields = ["id","name_group", "description", "city", "image", "event"]
+        fields = ["id", "name_group", "description", "city", "image", "event"]
+
+
+## Add user
+class BikeGroupsAddSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = GroupUsersRolModel
+        fields = ["user_id", "group_id", "rol"]
+
