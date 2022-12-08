@@ -29,9 +29,8 @@ const ButtonStyledCancel = styled(Button)({
 // Nombre, descripcion, imagen
 // },
 const GroupCover = () => {
-
     const { data } = useAuth()
-
+    
     return (
         <Stack justifyContent={'center'} alignItems={'center'} width={'100%'}>
             <Stack width="50%" heigth="auto">
@@ -55,7 +54,7 @@ const GroupCover = () => {
                                 variant="h5"
                                 component="div"
                             >
-                                <b>Ciclistas Argentinos</b>
+                                <b> {group.name} </b>
                             </Typography>
 
                             <Button

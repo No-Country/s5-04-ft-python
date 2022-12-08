@@ -77,7 +77,7 @@ const NewGroups = () => {
                     initialValues={initialValues}
                     enableReinitialize={true}
                     validationSchema={clientSchema}
-                    onSubmit={handleSubmit}
+                    onSubmit={(handleSubmit)}
                 >
                     {({
                         handleSubmit,

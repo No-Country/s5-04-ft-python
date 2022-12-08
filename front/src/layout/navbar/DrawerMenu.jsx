@@ -21,7 +21,7 @@ import {
     TextField,
     Typography,
 } from '@mui/material'
-import { Home, LogOut, Map, Search, Settings, Users } from 'react-feather'
+import { Home, LogOut, Map, Navigation2, Search, Settings, Users } from 'react-feather'
 import HomePage from '../../pages/HomePage'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
@@ -135,6 +135,19 @@ function ResponsiveDrawer(props) {
                         </ListItemButton>
                     </ListItem>
                 </Link>
+                <Link
+                    to={'https://nodemcu-geoapi.netlify.app/'}
+                    style={{ textDecoration: 'none', color: '#000' }}
+                >
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <Navigation2 color="#000" />
+                            </ListItemIcon>
+                            <ListItemText>Ver Recorrido en tiempo real</ListItemText>
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
             </List>
             {data?.username && (
                 <Stack>
@@ -167,7 +180,7 @@ function ResponsiveDrawer(props) {
                                         <Typography sx={{ fontSize: '12px' }}>
                                             {' '}
                                             Ciclistas Argentinos{' '}
-                                            <Typography
+                                            {/* <Typography
                                                 sx={{
                                                     fontSize: '10px',
                                                     color: '#999',
@@ -175,7 +188,7 @@ function ResponsiveDrawer(props) {
                                             >
                                                 {' '}
                                                 Miembro
-                                            </Typography>
+                                            </Typography> */}
                                         </Typography>
                                     </Stack>
                                 </ListItemButton>
