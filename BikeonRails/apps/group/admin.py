@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.group.models import EventModel, BikeGroupsModel
+from apps.group.models import EventModel, BikeGroupsModel, GroupUsersRolModel
 
 
 @admin.register(EventModel)
@@ -9,3 +9,4 @@ class EventoAdmin(admin.ModelAdmin):
 
 
 admin.site.register(BikeGroupsModel)
+admin.site.register(GroupUsersRolModel)

@@ -2,6 +2,7 @@ import { Stack, Typography, TextField, Button, styled } from '@mui/material'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import React from 'react'
+import { useGroup } from '../hooks/useGroup'
 
 const ButtonStyled = styled(Button)({
     backgroundColor: 'white',
@@ -34,17 +35,31 @@ const ButtonStyledCancel = styled(Button)({
 })
 
 const NewGroups = () => {
+    const { createGroup } = useGroup()
+
     const clientSchema = Yup.object().shape({
-        nameGroup: Yup.string().min(
+        name_group: Yup.string().min(
             3,
             'El nombre de usuario es demasiado corto'
         ),
     })
 
     const initialValues = {
-        nameGroup: '',
-        location: '',
+        name_group: '',
         description: '',
+        city: '',
+        event: {
+            title: 'test4',
+            description: 'test3',
+            start_route: 'test2',
+            end_route: 'test1',
+            start_date: 'test',
+            end_date: 'tests',
+        },
+    }
+
+    const handleSubmit = (values) => {
+        createGroup(values)
     }
 
     return (
@@ -62,6 +77,7 @@ const NewGroups = () => {
                     initialValues={initialValues}
                     enableReinitialize={true}
                     validationSchema={clientSchema}
+                    onSubmit={handleSubmit}
                 >
                     {({
                         handleSubmit,
@@ -71,7 +87,7 @@ const NewGroups = () => {
                         handleChange,
                         handleBlur,
                     }) => (
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Stack marginBottom="15px">
                                 <Typography
                                     fontSize="20px"
@@ -98,17 +114,17 @@ const NewGroups = () => {
                                     sx={{ width: '100%', marginTop: '1rem' }}
                                     label="Nombre del grupo"
                                     type="text"
-                                    name="nameGroup"
+                                    name="name_group"
                                     margin="dense"
                                     helperText={
-                                        touched.nameGroup &&
-                                        errors.nameGroup &&
-                                        errors.nameGroup
+                                        touched.name_group &&
+                                        errors.name_group &&
+                                        errors.name_group
                                     }
                                     size="small"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    value={values.nameGroup}
+                                    value={values.name_group}
                                 />
                             </Stack>
                             <Stack marginBottom="15px">
@@ -137,17 +153,17 @@ const NewGroups = () => {
                                     sx={{ width: '100%' }}
                                     label="Ubicacion"
                                     type="text"
-                                    name="location"
+                                    name="city"
                                     margin="dense"
                                     helperText={
-                                        touched.location &&
-                                        errors.location &&
-                                        errors.location
+                                        touched.city &&
+                                        errors.city &&
+                                        errors.city
                                     }
                                     size="small"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    value={values.location}
+                                    value={values.city}
                                 />
                             </Stack>
                             <Stack marginBottom="15px">
@@ -174,7 +190,6 @@ const NewGroups = () => {
                                     sx={{ width: '100%' }}
                                     multiline
                                     rows={5}
-                                    maxRows={8}
                                     label="Describe de qué trata tu grupo..."
                                     type="text"
                                     name="description"
@@ -201,7 +216,9 @@ const NewGroups = () => {
                                 </Typography>
                             </Stack>
                             <Stack direction="row" gap="1rem">
-                                <ButtonStyled>Crear Grupo</ButtonStyled>
+                                <ButtonStyled type="submit">
+                                    Crear Grupo
+                                </ButtonStyled>
                                 <ButtonStyledCancel>
                                     Cancelar
                                 </ButtonStyledCancel>

@@ -30,7 +30,16 @@ const ForgotPassword = () => {
         forgotPassword(values)
     }
     return (
-        <Stack>
+        <Stack ml="40%" mt="10rem">
+            <Typography
+                fontSize="24px"
+                fontFamily="Inter"
+                variant="h3"
+                fontWeight="400"
+                marginBottom="15px"
+            >
+                Ingresa tu email para reestablecer tu contraseña
+            </Typography>
             <Formik
                 initialValues={initialValues}
                 enableReinitialize={true}
