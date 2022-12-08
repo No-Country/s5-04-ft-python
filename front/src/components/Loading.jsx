@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Loading = () => {
-    return <div>Esta cargando!</div>
+const Loading = ({ children }) => {
+    return <p>{children}</p>
 }
 
 export default Loading

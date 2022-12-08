@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import * as Yup from 'yup'
 import { Form, Formik } from 'formik'
+import Loading from '../components/Loading'
 
 const initialForm = {
     email: '',
@@ -39,11 +40,20 @@ const LOGIN_FORM_VALIDATIONS = Yup.object().shape({
 })
 
 const Login = () => {
-    const { signIn, signOut } = useAuth()
+    const { signIn, loading } = useAuth()
 
     const handleSubmit = (values) => {
         signIn(values)
     }
+
+    if (loading)
+        return (
+            <Stack mt="10rem" ml="30rem">
+                <Loading>
+                    El usuario se esta logueando, aguarde unos segundos
+                </Loading>
+            </Stack>
+        )
 
     return (
         <Stack

@@ -1,10 +1,10 @@
 import { Toast } from '../utils/swalToast'
 import { createContext, useEffect, useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 
 export const API_ROUTE = import.meta.env.VITE_APP_API_ROUTE
-
+console.log(API_ROUTE)
 export const AuthContext = createContext({})
 
 export const AuthProvider = ({ children }) => {
@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const createUser = async (values) => {
+        setLoading(true)
         try {
             const requestOptions = {
                 method: 'POST',
@@ -45,7 +46,6 @@ export const AuthProvider = ({ children }) => {
                 mode: 'cors',
                 body: JSON.stringify(values),
             }
-            setLoading(true)
             await fetch(`${API_ROUTE}/auth/register/`, requestOptions)
                 .then((response) => response.json())
                 .then((data) => setDataAuth(data))
@@ -67,6 +67,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const signIn = async (values) => {
+        setLoading(true)
         try {
             const requestOptions = {
                 method: 'POST',
@@ -107,7 +108,6 @@ export const AuthProvider = ({ children }) => {
                 mode: 'cors',
                 body: JSON.stringify(values),
             }
-
             await fetch(`${API_ROUTE}/auth/logout/`, requestOptions)
                 .then((response) => response.json())
                 .then(() => {
