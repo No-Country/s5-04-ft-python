@@ -11,10 +11,13 @@ import {
 import React from 'react'
 import { styled } from '@mui/material'
 import { useAuth } from '../hooks/useAuth'
+import { useGroup } from '../hooks/useGroup'
+
 
 const CardGroups = ({ item }) => {
     const { data } = useAuth()
-
+    // const { grupos } = useGroup()
+   
     const ButtonStyled = styled(Button)({
         backgroundColor: '#F51D38',
         color: 'white',
@@ -26,8 +29,10 @@ const CardGroups = ({ item }) => {
         },
     })
 
+
     return (
         <Stack>
+            {/* {grupos.map((grupo, index) => ( */}
             <Card
                 sx={{
                     border: '1px solid',
@@ -43,7 +48,9 @@ const CardGroups = ({ item }) => {
                         borderRadius: '20px',
                         objectFit: 'contain',
                     }}
+                    // src={grupo.image}
                     src={item.img}
+                    // alt={grupo.name_group}
                     alt={item.groupName}
                 />
                 <CardContent>
@@ -53,9 +60,11 @@ const CardGroups = ({ item }) => {
                         variant="h5"
                         fontWeight="600"
                     >
+                        {/* {grupo.name_group} */}
                         {item.groupName}
                     </Typography>
                     <Typography marginY="8px" fontSize="16px">
+                        {/* {grupo.city} */}
                         {item.place}
                     </Typography>
                     <Typography fontSize="16px">{item.members}</Typography>
@@ -70,6 +79,7 @@ const CardGroups = ({ item }) => {
                     )}
                 </CardActions>
             </Card>
+            {/* ))} */}
         </Stack>
     )
 }
