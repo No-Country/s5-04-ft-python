@@ -19,7 +19,7 @@ import {
     InputAdornment,
     Stack,
     TextField,
-    Typography,
+    Typography
 } from '@mui/material'
 import { Home, LogOut, Map, Navigation2, Search, Settings, Users } from 'react-feather'
 import HomePage from '../../pages/HomePage'
@@ -135,8 +135,9 @@ function ResponsiveDrawer(props) {
                         </ListItemButton>
                     </ListItem>
                 </Link>
-                <Link
-                    to={'https://nodemcu-geoapi.netlify.app/'}
+                <a
+                    href="https://nodemcu-geoapi.netlify.app/"
+                    target={'_blank'}
                     style={{ textDecoration: 'none', color: '#000' }}
                 >
                     <ListItem disablePadding>
@@ -144,10 +145,17 @@ function ResponsiveDrawer(props) {
                             <ListItemIcon>
                                 <Navigation2 color="#000" />
                             </ListItemIcon>
-                            <ListItemText>Ver Recorrido en tiempo real</ListItemText>
+                            <ListItemText>
+                                Ver Recorrido en tiempo real
+                            </ListItemText>
                         </ListItemButton>
                     </ListItem>
-                </Link>
+                </a>
+                {/* <Link href="https://nodemcu-geoapi.netlify.app/">Recorrido en tiempo real</Link> */}
+                {/* <Link
+                    to={'https://nodemcu-geoapi.netlify.app/'}
+                    style={{ textDecoration: 'none', color: '#000' }}
+                ></Link> */}
             </List>
             {data?.username && (
                 <Stack>
